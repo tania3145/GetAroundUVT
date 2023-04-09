@@ -1,0 +1,6 @@
+framework module Pods_GetAroundUVTTests {
+  umbrella header "Pods-GetAroundUVTTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

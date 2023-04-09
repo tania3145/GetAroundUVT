@@ -1,0 +1,778 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */; };
+		234F694929E2F99200A8DECC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F694829E2F99200A8DECC /* ContentView.swift */; };
+		234F694B29E2F99300A8DECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234F694A29E2F99300A8DECC /* Assets.xcassets */; };
+		234F694E29E2F99300A8DECC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234F694D29E2F99300A8DECC /* Preview Assets.xcassets */; };
+		234F695829E2F99400A8DECC /* GetAroundUVTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F695729E2F99400A8DECC /* GetAroundUVTTests.swift */; };
+		234F696229E2F99400A8DECC /* GetAroundUVTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */; };
+		234F696429E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */; };
+		2373C9AB29E2FA74003D1D9B /* GoogleMapWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */; };
+		23EA05EB29E33C5800C56284 /* GoogleMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */; };
+		23EA05EE29E342C300C56284 /* UVTData.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EA05ED29E342C300C56284 /* UVTData.json */; };
+		6EB571223A091661283D16CA /* Pods_GetAroundUVT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324F6319315CE19D68D68337 /* Pods_GetAroundUVT.framework */; };
+		D91A6EEF36E0913CCAFC1094 /* Pods_GetAroundUVTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05BD14256D08C1E3E905660 /* Pods_GetAroundUVTTests.framework */; };
+		F5A0CE6F60AFDE23AD256118 /* Pods_GetAroundUVT_GetAroundUVTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2BC7839E550A55AA3CE358B /* Pods_GetAroundUVT_GetAroundUVTUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		234F695429E2F99400A8DECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 234F693B29E2F99200A8DECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 234F694229E2F99200A8DECC;
+			remoteInfo = GetAroundUVT;
+		};
+		234F695E29E2F99400A8DECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 234F693B29E2F99200A8DECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 234F694229E2F99200A8DECC;
+			remoteInfo = GetAroundUVT;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		234F694329E2F99200A8DECC /* GetAroundUVT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetAroundUVT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTApp.swift; sourceTree = "<group>"; };
+		234F694829E2F99200A8DECC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		234F694A29E2F99300A8DECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		234F694D29E2F99300A8DECC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		234F695329E2F99400A8DECC /* GetAroundUVTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetAroundUVTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		234F695729E2F99400A8DECC /* GetAroundUVTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTTests.swift; sourceTree = "<group>"; };
+		234F695D29E2F99400A8DECC /* GetAroundUVTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetAroundUVTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTUITests.swift; sourceTree = "<group>"; };
+		234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapWrapperView.swift; sourceTree = "<group>"; };
+		23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsService.swift; sourceTree = "<group>"; };
+		23EA05ED29E342C300C56284 /* UVTData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UVTData.json; sourceTree = "<group>"; };
+		324F6319315CE19D68D68337 /* Pods_GetAroundUVT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetAroundUVT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B5E5D2D2689757874C18658 /* Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9882F91AFB731BA233990B6C /* Pods-GetAroundUVT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT.release.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT.release.xcconfig"; sourceTree = "<group>"; };
+		9C2B7EC1B7F075EE8D0362BA /* Pods-GetAroundUVT-GetAroundUVTUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT-GetAroundUVTUITests.release.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B1D74D3947D3D10AED0B68A4 /* Pods-GetAroundUVTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVTTests.release.xcconfig"; path = "Target Support Files/Pods-GetAroundUVTTests/Pods-GetAroundUVTTests.release.xcconfig"; sourceTree = "<group>"; };
+		B2BC7839E550A55AA3CE358B /* Pods_GetAroundUVT_GetAroundUVTUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetAroundUVT_GetAroundUVTUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C05BD14256D08C1E3E905660 /* Pods_GetAroundUVTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetAroundUVTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC5EB679667F6796F2CF78AC /* Pods-GetAroundUVTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVTTests.debug.xcconfig"; path = "Target Support Files/Pods-GetAroundUVTTests/Pods-GetAroundUVTTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DE3253CA5A825A60F454CD85 /* Pods-GetAroundUVT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT.debug.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		234F694029E2F99200A8DECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EB571223A091661283D16CA /* Pods_GetAroundUVT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234F695029E2F99400A8DECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91A6EEF36E0913CCAFC1094 /* Pods_GetAroundUVTTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234F695A29E2F99400A8DECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5A0CE6F60AFDE23AD256118 /* Pods_GetAroundUVT_GetAroundUVTUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		234F693A29E2F99200A8DECC = {
+			isa = PBXGroup;
+			children = (
+				23EA05EC29E342AB00C56284 /* Resources */,
+				234F694529E2F99200A8DECC /* GetAroundUVT */,
+				234F695629E2F99400A8DECC /* GetAroundUVTTests */,
+				234F696029E2F99400A8DECC /* GetAroundUVTUITests */,
+				234F694429E2F99200A8DECC /* Products */,
+				7C486FC83A0D55405A4E3826 /* Pods */,
+				F5F18243F9BEF2B8308AAD39 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		234F694429E2F99200A8DECC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				234F694329E2F99200A8DECC /* GetAroundUVT.app */,
+				234F695329E2F99400A8DECC /* GetAroundUVTTests.xctest */,
+				234F695D29E2F99400A8DECC /* GetAroundUVTUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		234F694529E2F99200A8DECC /* GetAroundUVT */ = {
+			isa = PBXGroup;
+			children = (
+				23EA05E929E33C4200C56284 /* Services */,
+				234F697029E2F9AD00A8DECC /* Views */,
+				234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */,
+				234F694A29E2F99300A8DECC /* Assets.xcassets */,
+				234F694C29E2F99300A8DECC /* Preview Content */,
+			);
+			path = GetAroundUVT;
+			sourceTree = "<group>";
+		};
+		234F694C29E2F99300A8DECC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				234F694D29E2F99300A8DECC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		234F695629E2F99400A8DECC /* GetAroundUVTTests */ = {
+			isa = PBXGroup;
+			children = (
+				234F695729E2F99400A8DECC /* GetAroundUVTTests.swift */,
+			);
+			path = GetAroundUVTTests;
+			sourceTree = "<group>";
+		};
+		234F696029E2F99400A8DECC /* GetAroundUVTUITests */ = {
+			isa = PBXGroup;
+			children = (
+				234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */,
+				234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */,
+			);
+			path = GetAroundUVTUITests;
+			sourceTree = "<group>";
+		};
+		234F697029E2F9AD00A8DECC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				234F694829E2F99200A8DECC /* ContentView.swift */,
+				2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		23EA05E929E33C4200C56284 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		23EA05EC29E342AB00C56284 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				23EA05ED29E342C300C56284 /* UVTData.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7C486FC83A0D55405A4E3826 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE3253CA5A825A60F454CD85 /* Pods-GetAroundUVT.debug.xcconfig */,
+				9882F91AFB731BA233990B6C /* Pods-GetAroundUVT.release.xcconfig */,
+				5B5E5D2D2689757874C18658 /* Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig */,
+				9C2B7EC1B7F075EE8D0362BA /* Pods-GetAroundUVT-GetAroundUVTUITests.release.xcconfig */,
+				DC5EB679667F6796F2CF78AC /* Pods-GetAroundUVTTests.debug.xcconfig */,
+				B1D74D3947D3D10AED0B68A4 /* Pods-GetAroundUVTTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F5F18243F9BEF2B8308AAD39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				324F6319315CE19D68D68337 /* Pods_GetAroundUVT.framework */,
+				B2BC7839E550A55AA3CE358B /* Pods_GetAroundUVT_GetAroundUVTUITests.framework */,
+				C05BD14256D08C1E3E905660 /* Pods_GetAroundUVTTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		234F694229E2F99200A8DECC /* GetAroundUVT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 234F696729E2F99400A8DECC /* Build configuration list for PBXNativeTarget "GetAroundUVT" */;
+			buildPhases = (
+				5447112DCFD2C0424B552CE9 /* [CP] Check Pods Manifest.lock */,
+				234F693F29E2F99200A8DECC /* Sources */,
+				234F694029E2F99200A8DECC /* Frameworks */,
+				234F694129E2F99200A8DECC /* Resources */,
+				4AAF33F379E25A8EBE37FD77 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GetAroundUVT;
+			productName = GetAroundUVT;
+			productReference = 234F694329E2F99200A8DECC /* GetAroundUVT.app */;
+			productType = "com.apple.product-type.application";
+		};
+		234F695229E2F99400A8DECC /* GetAroundUVTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 234F696A29E2F99400A8DECC /* Build configuration list for PBXNativeTarget "GetAroundUVTTests" */;
+			buildPhases = (
+				FB713EAA556B55B65BC66CDF /* [CP] Check Pods Manifest.lock */,
+				234F694F29E2F99400A8DECC /* Sources */,
+				234F695029E2F99400A8DECC /* Frameworks */,
+				234F695129E2F99400A8DECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				234F695529E2F99400A8DECC /* PBXTargetDependency */,
+			);
+			name = GetAroundUVTTests;
+			productName = GetAroundUVTTests;
+			productReference = 234F695329E2F99400A8DECC /* GetAroundUVTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		234F695C29E2F99400A8DECC /* GetAroundUVTUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 234F696D29E2F99400A8DECC /* Build configuration list for PBXNativeTarget "GetAroundUVTUITests" */;
+			buildPhases = (
+				12496B234C14BDC0EFA26EFE /* [CP] Check Pods Manifest.lock */,
+				234F695929E2F99400A8DECC /* Sources */,
+				234F695A29E2F99400A8DECC /* Frameworks */,
+				234F695B29E2F99400A8DECC /* Resources */,
+				044286D77F3B4968B35C89F5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				234F695F29E2F99400A8DECC /* PBXTargetDependency */,
+			);
+			name = GetAroundUVTUITests;
+			productName = GetAroundUVTUITests;
+			productReference = 234F695D29E2F99400A8DECC /* GetAroundUVTUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		234F693B29E2F99200A8DECC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					234F694229E2F99200A8DECC = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					234F695229E2F99400A8DECC = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 234F694229E2F99200A8DECC;
+					};
+					234F695C29E2F99400A8DECC = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 234F694229E2F99200A8DECC;
+					};
+				};
+			};
+			buildConfigurationList = 234F693E29E2F99200A8DECC /* Build configuration list for PBXProject "GetAroundUVT" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 234F693A29E2F99200A8DECC;
+			productRefGroup = 234F694429E2F99200A8DECC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				234F694229E2F99200A8DECC /* GetAroundUVT */,
+				234F695229E2F99400A8DECC /* GetAroundUVTTests */,
+				234F695C29E2F99400A8DECC /* GetAroundUVTUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		234F694129E2F99200A8DECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23EA05EE29E342C300C56284 /* UVTData.json in Resources */,
+				234F694E29E2F99300A8DECC /* Preview Assets.xcassets in Resources */,
+				234F694B29E2F99300A8DECC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234F695129E2F99400A8DECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234F695B29E2F99400A8DECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		044286D77F3B4968B35C89F5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12496B234C14BDC0EFA26EFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GetAroundUVT-GetAroundUVTUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AAF33F379E25A8EBE37FD77 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5447112DCFD2C0424B552CE9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GetAroundUVT-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB713EAA556B55B65BC66CDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GetAroundUVTTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		234F693F29E2F99200A8DECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234F694929E2F99200A8DECC /* ContentView.swift in Sources */,
+				23EA05EB29E33C5800C56284 /* GoogleMapsService.swift in Sources */,
+				2373C9AB29E2FA74003D1D9B /* GoogleMapWrapperView.swift in Sources */,
+				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234F694F29E2F99400A8DECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234F695829E2F99400A8DECC /* GetAroundUVTTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234F695929E2F99400A8DECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234F696429E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift in Sources */,
+				234F696229E2F99400A8DECC /* GetAroundUVTUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		234F695529E2F99400A8DECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 234F694229E2F99200A8DECC /* GetAroundUVT */;
+			targetProxy = 234F695429E2F99400A8DECC /* PBXContainerItemProxy */;
+		};
+		234F695F29E2F99400A8DECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 234F694229E2F99200A8DECC /* GetAroundUVT */;
+			targetProxy = 234F695E29E2F99400A8DECC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		234F696529E2F99400A8DECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		234F696629E2F99400A8DECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		234F696829E2F99400A8DECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE3253CA5A825A60F454CD85 /* Pods-GetAroundUVT.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GetAroundUVT/Preview Content\"";
+				DEVELOPMENT_TEAM = Y72PBQH54Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TM.GetAroundUVT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		234F696929E2F99400A8DECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9882F91AFB731BA233990B6C /* Pods-GetAroundUVT.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GetAroundUVT/Preview Content\"";
+				DEVELOPMENT_TEAM = Y72PBQH54Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TM.GetAroundUVT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		234F696B29E2F99400A8DECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC5EB679667F6796F2CF78AC /* Pods-GetAroundUVTTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y72PBQH54Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TM.GetAroundUVTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetAroundUVT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GetAroundUVT";
+			};
+			name = Debug;
+		};
+		234F696C29E2F99400A8DECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1D74D3947D3D10AED0B68A4 /* Pods-GetAroundUVTTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y72PBQH54Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TM.GetAroundUVTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetAroundUVT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GetAroundUVT";
+			};
+			name = Release;
+		};
+		234F696E29E2F99400A8DECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B5E5D2D2689757874C18658 /* Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y72PBQH54Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TM.GetAroundUVTUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GetAroundUVT;
+			};
+			name = Debug;
+		};
+		234F696F29E2F99400A8DECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C2B7EC1B7F075EE8D0362BA /* Pods-GetAroundUVT-GetAroundUVTUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y72PBQH54Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TM.GetAroundUVTUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GetAroundUVT;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		234F693E29E2F99200A8DECC /* Build configuration list for PBXProject "GetAroundUVT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				234F696529E2F99400A8DECC /* Debug */,
+				234F696629E2F99400A8DECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		234F696729E2F99400A8DECC /* Build configuration list for PBXNativeTarget "GetAroundUVT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				234F696829E2F99400A8DECC /* Debug */,
+				234F696929E2F99400A8DECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		234F696A29E2F99400A8DECC /* Build configuration list for PBXNativeTarget "GetAroundUVTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				234F696B29E2F99400A8DECC /* Debug */,
+				234F696C29E2F99400A8DECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		234F696D29E2F99400A8DECC /* Build configuration list for PBXNativeTarget "GetAroundUVTUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				234F696E29E2F99400A8DECC /* Debug */,
+				234F696F29E2F99400A8DECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 234F693B29E2F99200A8DECC /* Project object */;
+}
