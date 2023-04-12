@@ -19,7 +19,12 @@ struct ContentView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Button(action: {map.moveCameraToUVT(withAnimation: true)}, label: {
+                    Button(action: {
+                        map.moveCameraToUVT(withAnimation: true)
+                        Task {
+                            try await map.runNavigationService()
+                        }
+                    }, label: {
                         Image(systemName: "location.fill")
                             .imageScale(.large)
                             .frame(width: 60, height: 60)

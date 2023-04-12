@@ -13,7 +13,7 @@ import GameplayKit
 class GoogleMapsService {
     public let mapView: GMSMapView
     
-    private let navService = IndoorNavigationService()
+    private let navService = NavigationService()
     private let uvtLocation = CLLocationCoordinate2D(latitude: 45.74717, longitude: 21.23105)
     private let uvtZoomLevel: Float = 17.5
     
@@ -21,32 +21,12 @@ class GoogleMapsService {
         self.mapView = mapView
         loadUVTAssets()
         moveCameraToUVT()
-        
-        // Test
-        drawPolyLine(color: .red, points:
-            IndoorNavigationService.to(SIMD2<Float>(4, 4)),
-            IndoorNavigationService.to(SIMD2<Float>(4, 6)),
-            IndoorNavigationService.to(SIMD2<Float>(6, 6)),
-            IndoorNavigationService.to(SIMD2<Float>(6, 4)),
-            IndoorNavigationService.to(SIMD2<Float>(4, 4))
-        )
-//        drawPolyLine(points:
-//                     CLLocationCoordinate2D(latitude: 45.74722467016889, longitude: 21.23149894712361),
-//                     CLLocationCoordinate2D(latitude: 45.74722467016889, longitude: 21.231286312177417),
-//                     CLLocationCoordinate2D(latitude: 45.74702405732543, longitude: 21.231286312177417),
-//                     CLLocationCoordinate2D(latitude: 45.74702405732543, longitude: 21.23149894712361),
-//                     CLLocationCoordinate2D(latitude: 45.74722467016889, longitude: 21.23149894712361))
-        
-//        let from = GKGraphNode2D(point: SIMD2<Float>(45.74705846624135, 21.230672431267912))
-//        let to = GKGraphNode2D(point: SIMD2<Float>(45.747272157228664, 21.231955369384778))
-        let from = GKGraphNode2D(point: SIMD2<Float>(2, 5))
-        let to = GKGraphNode2D(point: SIMD2<Float>(8, 5))
-        let path = navService.computePath(from: from, to: to)
+    }
+    
+    public func runNavigationService() async throws {
+        let path = try await navService.getPath()
         print(path)
-        if path.count <= 0 {
-            return
-        }
-        drawPolyLine(color: .green, points: path.map(IndoorNavigationService.to(_:)))
+        await mapView.renderPolyLine(points: path.map({p in CLLocationCoordinate2D(latitude: p[0], longitude: p[2])}), strokeColor: .green)
     }
     
     public func moveCameraToUVT(withAnimation: Bool = false) {
@@ -76,22 +56,6 @@ class GoogleMapsService {
 
             let renderer = GMUGeometryRenderer(map: mapView, geometries: geoJsonParser.features)
             renderer.render()
-    }
-    
-    private func drawPolyLine(color: UIColor, points: CLLocationCoordinate2D...) {
-        return drawPolyLine(color: color, points: points)
-    }
-    
-    private func drawPolyLine(color: UIColor, points: [CLLocationCoordinate2D]) {
-        let path = GMSMutablePath()
-        for p in points {
-            path.add(p)
-        }
-
-        let rectangle = GMSPolyline(path: path)
-        rectangle.strokeColor = color
-        rectangle.map = mapView
-        rectangle.strokeWidth = 4
     }
     
     static func createGoogleMapsService() -> GoogleMapsService {
