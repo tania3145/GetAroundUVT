@@ -15,7 +15,6 @@
 		234F696229E2F99400A8DECC /* GetAroundUVTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */; };
 		234F696429E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */; };
 		2351603929E489BC004AF8E1 /* MapsRenderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2351603829E489BC004AF8E1 /* MapsRenderUtils.swift */; };
-		2351603C29E48E70004AF8E1 /* ConvertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2351603B29E48E70004AF8E1 /* ConvertUtils.swift */; };
 		2373C9AB29E2FA74003D1D9B /* GoogleMapWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */; };
 		2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EA1229E5D93D00AF0CBB /* NavigationService.swift */; };
 		23EA05EB29E33C5800C56284 /* GoogleMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */; };
@@ -54,7 +53,7 @@
 		234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTUITests.swift; sourceTree = "<group>"; };
 		234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2351603829E489BC004AF8E1 /* MapsRenderUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsRenderUtils.swift; sourceTree = "<group>"; };
-		2351603B29E48E70004AF8E1 /* ConvertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertUtils.swift; sourceTree = "<group>"; };
+		235C218529E8AB8D00AABAD2 /* UVTFakeLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UVTFakeLocation.gpx; sourceTree = "<group>"; };
 		2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapWrapperView.swift; sourceTree = "<group>"; };
 		2381EA1229E5D93D00AF0CBB /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsService.swift; sourceTree = "<group>"; };
@@ -172,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				2351603829E489BC004AF8E1 /* MapsRenderUtils.swift */,
-				2351603B29E48E70004AF8E1 /* ConvertUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -190,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				23EA05ED29E342C300C56284 /* UVTData.json */,
+				235C218529E8AB8D00AABAD2 /* UVTFakeLocation.gpx */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -461,7 +460,6 @@
 				2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */,
 				2373C9AB29E2FA74003D1D9B /* GoogleMapWrapperView.swift in Sources */,
 				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,
-				2351603C29E48E70004AF8E1 /* ConvertUtils.swift in Sources */,
 				2351603929E489BC004AF8E1 /* MapsRenderUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +623,7 @@
 				DEVELOPMENT_TEAM = Y72PBQH54Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -655,6 +654,7 @@
 				DEVELOPMENT_TEAM = Y72PBQH54Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

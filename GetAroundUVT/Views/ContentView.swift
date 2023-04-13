@@ -15,30 +15,27 @@ struct ContentView: View {
         ZStack {
             GoogleMapWrapperView(map: $map)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        map.moveCameraToUVT(withAnimation: true)
-                        Task {
-                            try await map.runNavigationService()
-                        }
-                    }, label: {
-                        Image(systemName: "location.fill")
-                            .imageScale(.large)
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(Color.white)
-                    })
-                    .background(Color.blue)
-                    .cornerRadius(38.5)
-                    .padding()
-                    .shadow(color: Color.black.opacity(0.3),
-                            radius: 3,
-                            x: 3,
-                            y: 3)
-                }
-            }
+//            VStack {
+//                Spacer()
+//                HStack {
+//                    Spacer()
+//                    Button(action: {
+//                        map.moveCameraToUVT(withAnimation: true)
+//                    }, label: {
+//                        Image(systemName: "location.fill")
+//                            .imageScale(.large)
+//                            .frame(width: 60, height: 60)
+//                            .foregroundColor(Color.white)
+//                    })
+//                    .background(Color.blue)
+//                    .cornerRadius(38.5)
+//                    .padding()
+//                    .shadow(color: Color.black.opacity(0.3),
+//                            radius: 3,
+//                            x: 3,
+//                            y: 3)
+//                }
+//            }
         }
     }
 }

@@ -7,24 +7,36 @@
 
 import Foundation
 import GameplayKit
+import GoogleMaps
+import GoogleMapsUtils
+
+extension CLLocationCoordinate2D {
+    func toQueryItem(_ name: String, level: Int = 0) -> URLQueryItem {
+        return URLQueryItem(name: name, value: "\(latitude),\(longitude),\(level)")
+    }
+}
 
 class NavigationService {
     
-    private static let NAVIGATION_API_URL = URL(string: "https://6c30-2a02-2f01-410f-2f00-1447-906f-b0db-2dbd.ngrok-free.app")!;
+    private static let NAVIGATION_API_BASE_URL = URL(string: "https://d7d9-2a02-2f01-410f-2f00-2da2-a95-4950-2d5.ngrok-free.app")!;
+    private static let NAVIGATION_API_PATH_METHOD = "/path";
+    private static let NAVIGATION_API_POI_METHOD = "/poi";
     
-//    func connect() async {
-//        let task = URLSession.shared.dataTask(with: URLRequest(url: NavigationService.NAVIGATION_API_URL)) {(data, response, error) in
-//            guard let data = data else { return }
-//            let decoder = JSONDecoder()
-//            let path = try? decoder.decode([[Float]].self, from: data)
-//            return path
-//        }
-//        let result = try await task
-//    }
-    
-    func getPath() async throws -> [[Double]] {
-        let (data, _) = try await URLSession.shared.data(for: URLRequest(url: NavigationService.NAVIGATION_API_URL))
+    private func getJson<T>(_ path: String, queryItems: [URLQueryItem] = []) async throws -> T where T: Decodable {
+        let baseUrl = NavigationService.NAVIGATION_API_BASE_URL
+            .appendingPathComponent(path)
+            .appending(queryItems: queryItems)
+        let urlRequest = URLRequest(url: baseUrl)
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
         let decoder = JSONDecoder()
-        return try decoder.decode([[Double]].self, from: data)
+        return try decoder.decode(T.self, from: data)
+    }
+    
+    func getPoi() async throws -> Dictionary<String, [[Double]]> {
+        return try await getJson(NavigationService.NAVIGATION_API_POI_METHOD)
+    }
+    
+    func getPath(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) async throws -> [[Double]] {
+        return try await getJson(NavigationService.NAVIGATION_API_PATH_METHOD, queryItems: [start.toQueryItem("start"), end.toQueryItem("end")])
     }
 }

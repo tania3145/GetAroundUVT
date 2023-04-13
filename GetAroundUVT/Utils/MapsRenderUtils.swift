@@ -8,60 +8,23 @@
 import Foundation
 import GoogleMaps
 import GoogleMapsUtils
-import GameplayKit
+
+enum MapsRenderUtilsErrors: Error {
+    case uvtAssetsFailedToLoad
+}
 
 extension GMSMapView {
-
-    private static let strokeWidth: CGFloat = 4
+    public static let DEFAULT_STROKE_WEIGHT: CGFloat = 4
     
-    public func render(_ node: GKGraphNode2D, radius: Float) {
-        renderCircle(node.to(), radius: Double(radius) * 111000, fillColor: .cyan)
+    public func renderLine(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, strokeColor: UIColor) -> GMSPolyline {
+        return renderPolyLine(points: [from, to], strokeColor: strokeColor)
     }
     
-    public func render(_ polygon: GKPolygonObstacle) {
-        if polygon.vertexCount <= 0 {
-            return
-        }
-        
-        var points: [CLLocationCoordinate2D] = []
-        for i in 0...polygon.vertexCount - 1 {
-            points.append(polygon.vertex(at: i).to())
-        }
-        renderPolygon(points: points, fillColor: .red)
-    }
-    
-    public func render(_ graph: GKMeshGraph<GKGraphNode2D>) {
-        graph.obstacles.forEach() { o in
-            render(o)
-        }
-        graph.nodes?.forEach() { n in
-            if let n2d = n as? GKGraphNode2D {
-                render(n2d, radius: graph.bufferRadius)
-            } else {
-                print("Cannot render GKGraphNode.")
-            }
-        }
-        
-        for i in 0...graph.triangleCount - 1 {
-            let ps = graph.triangle(at: i).points
-            renderPolyLine(points: [
-                ps.0.to().to(),
-                ps.1.to().to(),
-                ps.2.to().to(),
-                ps.0.to().to()
-            ], strokeColor: .green)
-        }
-    }
-    
-    public func renderLine(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, strokeColor: UIColor) {
-        renderPolyLine(points: [from, to], strokeColor: strokeColor)
-    }
-    
-    public func renderPolyLine(points: CLLocationCoordinate2D..., strokeColor: UIColor) {
+    public func renderPolyLine(points: CLLocationCoordinate2D..., strokeColor: UIColor) -> GMSPolyline {
         return renderPolyLine(points: points, strokeColor: strokeColor)
     }
     
-    public func renderPolyLine(points: [CLLocationCoordinate2D], strokeColor: UIColor) {
+    public func renderPolyLine(points: [CLLocationCoordinate2D], strokeColor: UIColor) -> GMSPolyline {
         let path = GMSMutablePath()
         for p in points {
             path.add(p)
@@ -69,15 +32,16 @@ extension GMSMapView {
 
         let rectangle = GMSPolyline(path: path)
         rectangle.strokeColor = strokeColor
-        rectangle.strokeWidth = GMSMapView.strokeWidth
+        rectangle.strokeWidth = GMSMapView.DEFAULT_STROKE_WEIGHT
         rectangle.map = self
+        return rectangle
     }
     
-    public func renderPolygon(points: CLLocationCoordinate2D..., fillColor: UIColor, strokeColor: UIColor = .black) {
-        renderPolygon(points: points, fillColor: fillColor, strokeColor: strokeColor)
+    public func renderPolygon(points: CLLocationCoordinate2D..., fillColor: UIColor, strokeColor: UIColor = .black, strokeWeight: CGFloat = GMSMapView.DEFAULT_STROKE_WEIGHT) -> GMSPolygon {
+        return renderPolygon(points: points, fillColor: fillColor, strokeColor: strokeColor, strokeWeight: strokeWeight)
     }
     
-    public func renderPolygon(points: [CLLocationCoordinate2D], fillColor: UIColor, strokeColor: UIColor = .black) {
+    public func renderPolygon(points: [CLLocationCoordinate2D], fillColor: UIColor, strokeColor: UIColor = .black, strokeWeight: CGFloat = GMSMapView.DEFAULT_STROKE_WEIGHT) -> GMSPolygon {
         let rect = GMSMutablePath()
         for p in points {
             rect.add(p)
@@ -86,15 +50,35 @@ extension GMSMapView {
         let polygon = GMSPolygon(path: rect)
         polygon.fillColor = fillColor;
         polygon.strokeColor = .black
-        polygon.strokeWidth = GMSMapView.strokeWidth
+        polygon.strokeWidth = strokeWeight
         polygon.map = self
+        return polygon
     }
     
-    public func renderCircle(_ center: CLLocationCoordinate2D, radius: Double, fillColor: UIColor, strokeColor: UIColor = .black) {
+    public func renderCircle(_ center: CLLocationCoordinate2D, radius: Double, fillColor: UIColor, strokeColor: UIColor = .black) -> GMSCircle {
         let circle = GMSCircle(position: center, radius: radius)
         circle.fillColor = fillColor
         circle.strokeColor = strokeColor
-        circle.strokeWidth = GMSMapView.strokeWidth
+        circle.strokeWidth = GMSMapView.DEFAULT_STROKE_WEIGHT
         circle.map = self
+        return circle
+    }
+    
+    public func loadUVTAssets() throws -> GMUGeometryRenderer {
+        guard let path = Bundle.main.path(forResource: "UVTData", ofType: "json") else {
+            throw MapsRenderUtilsErrors.uvtAssetsFailedToLoad
+        }
+        
+        let url = URL(fileURLWithPath: path)
+
+        let geoJsonParser = GMUGeoJSONParser(url: url)
+        geoJsonParser.parse()
+
+        let renderer = GMUGeometryRenderer(map: self, geometries: geoJsonParser.features)
+        renderer.render()
+        renderer.mapOverlays().forEach() { o in
+            o.isTappable = false
+        }
+        return renderer
     }
 }
