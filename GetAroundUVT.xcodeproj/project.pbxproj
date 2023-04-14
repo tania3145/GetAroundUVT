@@ -14,11 +14,11 @@
 		234F695829E2F99400A8DECC /* GetAroundUVTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F695729E2F99400A8DECC /* GetAroundUVTTests.swift */; };
 		234F696229E2F99400A8DECC /* GetAroundUVTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */; };
 		234F696429E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */; };
-		2351603929E489BC004AF8E1 /* MapsRenderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2351603829E489BC004AF8E1 /* MapsRenderUtils.swift */; };
-		2373C9AB29E2FA74003D1D9B /* GoogleMapWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */; };
-		2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EA1229E5D93D00AF0CBB /* NavigationService.swift */; };
-		23EA05EB29E33C5800C56284 /* GoogleMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */; };
+		2381EA1329E5D93D00AF0CBB /* GetAroundUVTBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */; };
 		23EA05EE29E342C300C56284 /* UVTData.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EA05ED29E342C300C56284 /* UVTData.json */; };
+		23FA048029E9938600C2E9D4 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA047F29E9938600C2E9D4 /* MapModel.swift */; };
+		23FA048229E9939400C2E9D4 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA048129E9939400C2E9D4 /* MapController.swift */; };
+		23FA048429E993B000C2E9D4 /* MapComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA048329E993B000C2E9D4 /* MapComponentView.swift */; };
 		6EB571223A091661283D16CA /* Pods_GetAroundUVT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324F6319315CE19D68D68337 /* Pods_GetAroundUVT.framework */; };
 		D91A6EEF36E0913CCAFC1094 /* Pods_GetAroundUVTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05BD14256D08C1E3E905660 /* Pods_GetAroundUVTTests.framework */; };
 		F5A0CE6F60AFDE23AD256118 /* Pods_GetAroundUVT_GetAroundUVTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2BC7839E550A55AA3CE358B /* Pods_GetAroundUVT_GetAroundUVTUITests.framework */; };
@@ -52,12 +52,12 @@
 		234F695D29E2F99400A8DECC /* GetAroundUVTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetAroundUVTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTUITests.swift; sourceTree = "<group>"; };
 		234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2351603829E489BC004AF8E1 /* MapsRenderUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsRenderUtils.swift; sourceTree = "<group>"; };
 		235C218529E8AB8D00AABAD2 /* UVTFakeLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UVTFakeLocation.gpx; sourceTree = "<group>"; };
-		2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapWrapperView.swift; sourceTree = "<group>"; };
-		2381EA1229E5D93D00AF0CBB /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
-		23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsService.swift; sourceTree = "<group>"; };
+		2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTBackendService.swift; sourceTree = "<group>"; };
 		23EA05ED29E342C300C56284 /* UVTData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UVTData.json; sourceTree = "<group>"; };
+		23FA047F29E9938600C2E9D4 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		23FA048129E9939400C2E9D4 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		23FA048329E993B000C2E9D4 /* MapComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponentView.swift; sourceTree = "<group>"; };
 		324F6319315CE19D68D68337 /* Pods_GetAroundUVT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetAroundUVT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B5E5D2D2689757874C18658 /* Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9882F91AFB731BA233990B6C /* Pods-GetAroundUVT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT.release.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		234F694529E2F99200A8DECC /* GetAroundUVT */ = {
 			isa = PBXGroup;
 			children = (
-				2351603A29E48C34004AF8E1 /* Utils */,
+				2351603A29E48C34004AF8E1 /* Components */,
 				23EA05E929E33C4200C56284 /* Services */,
 				234F697029E2F9AD00A8DECC /* Views */,
 				234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */,
@@ -162,24 +162,22 @@
 			isa = PBXGroup;
 			children = (
 				234F694829E2F99200A8DECC /* ContentView.swift */,
-				2373C9AA29E2FA74003D1D9B /* GoogleMapWrapperView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2351603A29E48C34004AF8E1 /* Utils */ = {
+		2351603A29E48C34004AF8E1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				2351603829E489BC004AF8E1 /* MapsRenderUtils.swift */,
+				23FA047E29E9934000C2E9D4 /* MapComponent */,
 			);
-			path = Utils;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		23EA05E929E33C4200C56284 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				23EA05EA29E33C5800C56284 /* GoogleMapsService.swift */,
-				2381EA1229E5D93D00AF0CBB /* NavigationService.swift */,
+				2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,6 +189,16 @@
 				235C218529E8AB8D00AABAD2 /* UVTFakeLocation.gpx */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		23FA047E29E9934000C2E9D4 /* MapComponent */ = {
+			isa = PBXGroup;
+			children = (
+				23FA047F29E9938600C2E9D4 /* MapModel.swift */,
+				23FA048129E9939400C2E9D4 /* MapController.swift */,
+				23FA048329E993B000C2E9D4 /* MapComponentView.swift */,
+			);
+			path = MapComponent;
 			sourceTree = "<group>";
 		};
 		7C486FC83A0D55405A4E3826 /* Pods */ = {
@@ -456,11 +464,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				234F694929E2F99200A8DECC /* ContentView.swift in Sources */,
-				23EA05EB29E33C5800C56284 /* GoogleMapsService.swift in Sources */,
-				2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */,
-				2373C9AB29E2FA74003D1D9B /* GoogleMapWrapperView.swift in Sources */,
+				23FA048229E9939400C2E9D4 /* MapController.swift in Sources */,
+				2381EA1329E5D93D00AF0CBB /* GetAroundUVTBackendService.swift in Sources */,
+				23FA048429E993B000C2E9D4 /* MapComponentView.swift in Sources */,
+				23FA048029E9938600C2E9D4 /* MapModel.swift in Sources */,
 				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,
-				2351603929E489BC004AF8E1 /* MapsRenderUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
