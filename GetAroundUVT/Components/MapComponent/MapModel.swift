@@ -27,11 +27,7 @@ class Path {
 }
 
 class Room {
-    public var index: String {
-        get {
-            return name // TODO: Modify this once firebase is installed
-        }
-    }
+    public let index: String
     public let name: String
     public let coordinates: [CLLocationCoordinate2D]
     public let level: Int
@@ -49,7 +45,8 @@ class Room {
         }
     }
     
-    init(name: String, coordinates: [CLLocationCoordinate2D], level: Int) {
+    init(index: String, name: String, coordinates: [CLLocationCoordinate2D], level: Int) {
+        self.index = index
         self.name = name
         self.coordinates = coordinates
         self.level = level

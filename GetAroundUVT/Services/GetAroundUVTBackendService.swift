@@ -14,6 +14,12 @@ extension CLLocationCoordinate2D {
     }
 }
 
+struct RoomJsonData: Codable {
+    public let index: String
+    public let name: String
+    public let coordinates: [[Double]]
+}
+
 class GetAroundUVTBackendService {
     private static let NAVIGATION_API_BASE_URL = URL(string: "https://f3d9-2a02-2f01-410f-2f00-40f6-436-2fe1-c826.ngrok-free.app")!;
     private static let NAVIGATION_API_PATH_METHOD = "/path";
@@ -31,16 +37,17 @@ class GetAroundUVTBackendService {
     
     func getRooms() async throws -> [Room] {
         var rooms: [Room] = []
-        let data: Dictionary<String, [[Double]]> = try await getJson(GetAroundUVTBackendService.NAVIGATION_API_POI_METHOD)
-        for (key, value) in data {
-            let convertedValue = value.map { el in
+        let data: Array<RoomJsonData> = try await getJson(GetAroundUVTBackendService.NAVIGATION_API_POI_METHOD)
+        
+        for row in data {
+            let convertedPoints = row.coordinates.map { el in
                 return (CLLocationCoordinate2D(latitude: el[0], longitude: el[1]), el[2])
             }
-            rooms.append(Room(name: key, coordinates: convertedValue.map { val in
+            rooms.append(Room(index: row.index, name: row.name, coordinates: convertedPoints.map { val in
                 return val.0
-            }, level: Int(convertedValue.reduce(0) { (prevValue, el) in
+            }, level: Int(convertedPoints.reduce(0) { (prevValue, el) in
                 return prevValue + el.1
-            } / Double(convertedValue.count))))
+            } / Double(convertedPoints.count))))
         }
         return rooms
     }

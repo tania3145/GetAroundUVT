@@ -83,4 +83,8 @@ class MapController: NSObject, GMSMapViewDelegate {
     public func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print(coordinate)
     }
+    
+    public func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        renderer.mapWasDragged()
+    }
 }

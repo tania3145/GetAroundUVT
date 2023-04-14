@@ -130,6 +130,10 @@ class MapRenderer {
         moveCameraTo(MapRenderer.UVT_LOCATION)
     }
     
+    public func mapWasDragged() {
+        // TODO hide search bar
+    }
+    
     public func getRoom(_ polygon: GMSPolygon) -> Room {
         return renderedState.roomPolygons.getRoom(polygon)
     }

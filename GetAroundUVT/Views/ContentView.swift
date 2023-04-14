@@ -15,7 +15,8 @@ struct ContentView: View {
         subsystem: Bundle.main.bundleIdentifier!,
         category: "ContentView"
     )
-    
+    @State private var searchText = ""
+
     init(loadPreview: Bool) {
         self.loadPreview = loadPreview
     }
@@ -37,6 +38,12 @@ struct ContentView: View {
                     MapComponentView(mapRenderer: $mapRenderer)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     VStack {
+                        SearchBar(text: $searchText)
+                            .padding(.top, 50)
+                            .shadow(color: Color.gray, radius: 10, x: 5, y: 5)
+                            Spacer()
+                    }
+                    VStack {
                         Spacer()
                         HStack {
                             Spacer()
@@ -57,23 +64,23 @@ struct ContentView: View {
                                     y: 3)
                         }
                     }
-                }.background(.white)
+                }.background(Color.white)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
                     .edgesIgnoringSafeArea(.top)
-                
+
                 VStack {
                     Text("Friends Screen")
-                }.background(.white)
+                }.background(Color.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .tabItem {
                         Label("Friends", systemImage: "person")
                     }
-                
+
                 VStack {
                     Text("Nearby Screen")
-                }.background(.white)
+                }.background(Color.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .tabItem {
                         Label("Nearby", systemImage: "mappin.circle")
@@ -83,8 +90,42 @@ struct ContentView: View {
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(loadPreview: true)
+    }
+}
+
+struct SearchBar: View {
+    @Binding var text: String
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Spacer()
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.gray)
+            TextField("", text: $text)
+                .foregroundColor(.black)
+                .padding(8)
+                .background(Color.white)
+                .cornerRadius(8)
+                .padding(.trailing, 8)
+                .overlay(
+                    Text("Search")
+                        .font(.system(size: 20, weight: .regular, design: .default))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.gray)
+                        .padding(.leading, 4)
+                        .padding(.trailing, 2)
+                        .opacity(100)
+                )
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
+        .background(Color.white)
+        .cornerRadius(20)
+        .padding(.horizontal)
     }
 }
