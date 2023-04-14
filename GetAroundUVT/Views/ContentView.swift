@@ -5,22 +5,37 @@
 //  Created by Tania Maria on 09.04.2023.
 //
 
+import os
 import SwiftUI
 
 struct ContentView: View {
-    @State var mapController = MapController()
+    @State var loadPreview: Bool = false
+    @State var mapRenderer = MapRenderer()
+    @State private var logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: "ContentView"
+    )
     
     var body: some View {
-        mapController.attachView(mapComponentView: MapComponentView(mapController: $mapController))
+        let mapController = MapController(mapRenderer: mapRenderer)
+        Task {
+            do {
+                if (!loadPreview) {
+                    try await mapController.loadMetadata()
+                }
+            } catch {
+                logger.error("ERROR ENCOUNTERED: \(error)")
+            }
+        }
         return ZStack {
-            mapController.view
+            MapComponentView(mapRenderer: $mapRenderer)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
                     Button(action: {
-                        mapController.view.mapRenderer.moveCameraTo(MapRenderer.UVT_LOCATION, withAnimation: true)
+                        mapController.renderer.moveCameraTo(MapRenderer.UVT_LOCATION, withAnimation: true)
                     }, label: {
                         Image(systemName: "location.fill")
                             .imageScale(.large)
@@ -42,6 +57,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(loadPreview: true)
     }
 }

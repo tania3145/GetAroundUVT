@@ -11,7 +11,6 @@ import GoogleMaps
 @main
 struct GetAroundUVTApp: App {
     var body: some Scene {
-        GMSServices.provideAPIKey("AIzaSyBvpb75co2ehXH-qG420MrwPhhZbmqJRVM")
         return WindowGroup {
             ContentView()
         }

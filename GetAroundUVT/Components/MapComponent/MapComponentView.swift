@@ -111,6 +111,7 @@ class MapRenderer {
     private var renderedState: RenderedState
     
     convenience init() {
+        GMSServices.provideAPIKey("AIzaSyBvpb75co2ehXH-qG420MrwPhhZbmqJRVM")
         // [DO NOT DELETE COMMENT BELOW] Enable custom styling
         // let mapView = GMSMapView(frame: CGRect.null, mapID: GMSMapID(identifier: "6f2428702d0bdd32"), camera: GMSCameraPosition())
         let mapView = GMSMapView()
@@ -190,8 +191,7 @@ class MapRenderer {
 }
 
 struct MapComponentView: UIViewRepresentable {
-    @State public var mapRenderer: MapRenderer = MapRenderer()
-    @Binding public var mapController: MapController
+    @Binding var mapRenderer: MapRenderer
     
     func makeUIView(context: Context) -> UIView {
         return mapRenderer.mapView;
