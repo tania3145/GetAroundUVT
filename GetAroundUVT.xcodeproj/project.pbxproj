@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23356C9D29EA22CD00809DEC /* MapsRenderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23356C9C29EA22CD00809DEC /* MapsRenderUtils.swift */; };
 		234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */; };
 		234F694929E2F99200A8DECC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F694829E2F99200A8DECC /* ContentView.swift */; };
 		234F694B29E2F99300A8DECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234F694A29E2F99300A8DECC /* Assets.xcassets */; };
@@ -15,10 +16,9 @@
 		234F696229E2F99400A8DECC /* GetAroundUVTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696129E2F99400A8DECC /* GetAroundUVTUITests.swift */; };
 		234F696429E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F696329E2F99400A8DECC /* GetAroundUVTUITestsLaunchTests.swift */; };
 		2381EA1329E5D93D00AF0CBB /* GetAroundUVTBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */; };
+		23E52AC929EAA8DE0018CA6D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E52AC829EAA8DE0018CA6D /* MapViewModel.swift */; };
 		23EA05EE29E342C300C56284 /* UVTData.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EA05ED29E342C300C56284 /* UVTData.json */; };
-		23FA048029E9938600C2E9D4 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA047F29E9938600C2E9D4 /* MapModel.swift */; };
-		23FA048229E9939400C2E9D4 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA048129E9939400C2E9D4 /* MapController.swift */; };
-		23FA048429E993B000C2E9D4 /* MapComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA048329E993B000C2E9D4 /* MapComponentView.swift */; };
+		23FA048429E993B000C2E9D4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA048329E993B000C2E9D4 /* MapView.swift */; };
 		6EB571223A091661283D16CA /* Pods_GetAroundUVT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324F6319315CE19D68D68337 /* Pods_GetAroundUVT.framework */; };
 		D91A6EEF36E0913CCAFC1094 /* Pods_GetAroundUVTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05BD14256D08C1E3E905660 /* Pods_GetAroundUVTTests.framework */; };
 		F5A0CE6F60AFDE23AD256118 /* Pods_GetAroundUVT_GetAroundUVTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2BC7839E550A55AA3CE358B /* Pods_GetAroundUVT_GetAroundUVTUITests.framework */; };
@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23356C9C29EA22CD00809DEC /* MapsRenderUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsRenderUtils.swift; sourceTree = "<group>"; };
 		234F694329E2F99200A8DECC /* GetAroundUVT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetAroundUVT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTApp.swift; sourceTree = "<group>"; };
 		234F694829E2F99200A8DECC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,10 +56,9 @@
 		235C218529E8AB8D00AABAD2 /* UVTFakeLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UVTFakeLocation.gpx; sourceTree = "<group>"; };
 		2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTBackendService.swift; sourceTree = "<group>"; };
 		23AF05B129E9CE9B0060BE48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		23E52AC829EAA8DE0018CA6D /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		23EA05ED29E342C300C56284 /* UVTData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UVTData.json; sourceTree = "<group>"; };
-		23FA047F29E9938600C2E9D4 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
-		23FA048129E9939400C2E9D4 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
-		23FA048329E993B000C2E9D4 /* MapComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponentView.swift; sourceTree = "<group>"; };
+		23FA048329E993B000C2E9D4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		324F6319315CE19D68D68337 /* Pods_GetAroundUVT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetAroundUVT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B5E5D2D2689757874C18658 /* Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9882F91AFB731BA233990B6C /* Pods-GetAroundUVT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAroundUVT.release.xcconfig"; path = "Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,9 +196,9 @@
 		23FA047E29E9934000C2E9D4 /* MapComponent */ = {
 			isa = PBXGroup;
 			children = (
-				23FA047F29E9938600C2E9D4 /* MapModel.swift */,
-				23FA048129E9939400C2E9D4 /* MapController.swift */,
-				23FA048329E993B000C2E9D4 /* MapComponentView.swift */,
+				23FA048329E993B000C2E9D4 /* MapView.swift */,
+				23356C9C29EA22CD00809DEC /* MapsRenderUtils.swift */,
+				23E52AC829EAA8DE0018CA6D /* MapViewModel.swift */,
 			);
 			path = MapComponent;
 			sourceTree = "<group>";
@@ -466,11 +466,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				234F694929E2F99200A8DECC /* ContentView.swift in Sources */,
-				23FA048229E9939400C2E9D4 /* MapController.swift in Sources */,
 				2381EA1329E5D93D00AF0CBB /* GetAroundUVTBackendService.swift in Sources */,
-				23FA048429E993B000C2E9D4 /* MapComponentView.swift in Sources */,
-				23FA048029E9938600C2E9D4 /* MapModel.swift in Sources */,
+				23FA048429E993B000C2E9D4 /* MapView.swift in Sources */,
 				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,
+				23356C9D29EA22CD00809DEC /* MapsRenderUtils.swift in Sources */,
+				23E52AC929EAA8DE0018CA6D /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

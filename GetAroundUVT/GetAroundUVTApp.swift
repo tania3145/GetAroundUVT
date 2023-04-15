@@ -12,7 +12,7 @@ import GoogleMaps
 struct GetAroundUVTApp: App {
     var body: some Scene {
         return WindowGroup {
-            ContentView(loadPreview: false)
+            ContentView()
         }
     }
 }

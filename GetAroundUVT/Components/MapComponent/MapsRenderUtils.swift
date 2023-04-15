@@ -1,13 +1,11 @@
 //
-//  MapComponentView.swift
+//  GMSMapViewExtensions.swift
 //  GetAroundUVT
 //
-//  Created by Tania Maria on 14.04.2023.
+//  Created by Tania Maria on 15.04.2023.
 //
 
-import os
 import Foundation
-import SwiftUI
 import GoogleMaps
 import GoogleMapsUtils
 
@@ -93,86 +91,42 @@ class RoomToPolygonCollection {
     }
 }
 
-class RenderedState {
+class MapRenderer {
     public var currentDrawnPath: GMSPolyline?
     public var currentHighlightedRoom: GMSPolygon?
     public var roomPolygons: RoomToPolygonCollection = RoomToPolygonCollection()
-}
-
-class MapRenderer {
-    public static let UVT_LOCATION = CLLocationCoordinate2D(latitude: 45.74717, longitude: 21.23105)
-    private let DEFAULT_ZOOM_LEVEL: Float = 17.5
     
-    public let mapView: GMSMapView
-    private let logger = Logger(
-        subsystem: Bundle.main.bundleIdentifier!,
-        category: "MapComponentView"
-    )
-    private var renderedState: RenderedState
-    
-    convenience init() {
-        GMSServices.provideAPIKey("AIzaSyBvpb75co2ehXH-qG420MrwPhhZbmqJRVM")
-        // [DO NOT DELETE COMMENT BELOW] Enable custom styling
-        // let mapView = GMSMapView(frame: CGRect.null, mapID: GMSMapID(identifier: "6f2428702d0bdd32"), camera: GMSCameraPosition())
-        let mapView = GMSMapView()
-        self.init(mapView: mapView)
-    }
+    private var mapView: GMSMapView
     
     init(mapView: GMSMapView) {
         self.mapView = mapView
-        self.renderedState = RenderedState()
-        
-        do {
-            _ = try loadUVTAssets()
-        } catch {
-            logger.error("ERROR ENCOUNTERED: \(error)")
+    }
+    
+    public func renderBuilding(_ building: Building) {
+        for room in building.rooms {
+            renderRoom(room)
         }
-        moveCameraTo(MapRenderer.UVT_LOCATION)
     }
     
-    public func mapWasDragged() {
-        // TODO hide search bar
-    }
-    
-    public func getRoom(_ polygon: GMSPolygon) -> Room {
-        return renderedState.roomPolygons.getRoom(polygon)
-    }
-    
-    public func renderRooms(_ rooms: [Room]) {
-        for room in rooms {
-            let polygon = mapView.renderPolygon(points: room.coordinates, fillColor: .white.withAlphaComponent(0), strokeWeight: 1)
-            polygon.isTappable = true
-            let marker = mapView.renderMarker(title: room.name, position: room.center)
-            marker.isTappable = true
-            renderedState.roomPolygons.addRoomPolygon(room, polygon)
-        }
+    public func renderRoom(_ room: Room) {
+        let polygon = mapView.renderPolygon(points: room.coordinates, fillColor: .white.withAlphaComponent(0), strokeWeight: 1)
+        polygon.isTappable = true
+        let marker = mapView.renderMarker(title: room.name, position: room.center)
+        marker.isTappable = true
+        roomPolygons.addRoomPolygon(room, polygon)
     }
     
     public func renderPath(_ path: Path) {
-        renderedState.currentDrawnPath?.map = nil
-        renderedState.currentDrawnPath = mapView.renderPolyLine(points: path.points.map { point in
+        currentDrawnPath?.map = nil
+        currentDrawnPath = mapView.renderPolyLine(points: path.points.map { point in
             return point.coordinates
         }, strokeColor: .green)
     }
     
     public func highlightRoom(_ room: Room) {
-        renderedState.currentHighlightedRoom?.fillColor = .white.withAlphaComponent(0)
-        renderedState.currentHighlightedRoom = renderedState.roomPolygons.getPolygon(room)
-        renderedState.currentHighlightedRoom?.fillColor = .purple.withAlphaComponent(0.3)
-    }
-    
-    public func moveCameraTo(_ location: CLLocationCoordinate2D, withAnimation: Bool = false) {
-        let camera = GMSCameraPosition(
-            latitude: location.latitude,
-            longitude: location.longitude,
-            zoom: DEFAULT_ZOOM_LEVEL)
-        
-        if withAnimation {
-            let uvtCam = GMSCameraUpdate.setCamera(camera)
-            mapView.animate(with: uvtCam)
-        } else {
-            mapView.camera = camera
-        }
+        currentHighlightedRoom?.fillColor = .white.withAlphaComponent(0)
+        currentHighlightedRoom = roomPolygons.getPolygon(room)
+        currentHighlightedRoom?.fillColor = .purple.withAlphaComponent(0.3)
     }
     
     public func loadUVTAssets() throws -> GMUGeometryRenderer {
@@ -192,14 +146,11 @@ class MapRenderer {
         }
         return renderer
     }
-}
-
-struct MapComponentView: UIViewRepresentable {
-    @Binding var mapRenderer: MapRenderer
     
-    func makeUIView(context: Context) -> UIView {
-        return mapRenderer.mapView;
+    public func overlayToRoom(_ overlay: GMSOverlay) -> Room? {
+        if let polygon = overlay as? GMSPolygon {
+            return roomPolygons.getRoom(polygon)
+        }
+        return nil
     }
-    
-    func updateUIView(_ uiView: UIView, context: Context) {}
 }

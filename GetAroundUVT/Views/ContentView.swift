@@ -5,37 +5,17 @@
 //  Created by Tania Maria on 09.04.2023.
 //
 
-import os
 import SwiftUI
+import GoogleMaps
 
 struct ContentView: View {
-    @State var loadPreview: Bool = false
-    @State var mapRenderer = MapRenderer()
-    @State private var logger = Logger(
-        subsystem: Bundle.main.bundleIdentifier!,
-        category: "ContentView"
-    )
     @State private var searchText = ""
-
-    init(loadPreview: Bool) {
-        self.loadPreview = loadPreview
-    }
     
     var body: some View {
-        let mapController = MapController(mapRenderer: mapRenderer)
-        Task {
-            do {
-                if (!loadPreview) {
-                    try await mapController.loadMetadata()
-                }
-            } catch {
-                logger.error("ERROR ENCOUNTERED: \(error)")
-            }
-        }
-        return TabView {
+        TabView {
             Group {
                 ZStack {
-                    MapComponentView(mapRenderer: $mapRenderer)
+                    MapView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     VStack {
                         SearchBar(text: $searchText)
@@ -48,7 +28,7 @@ struct ContentView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                mapController.renderer.moveCameraTo(MapRenderer.UVT_LOCATION, withAnimation: true)
+                                // TODO
                             }, label: {
                                 Image(systemName: "location.fill")
                                     .imageScale(.large)
@@ -93,7 +73,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(loadPreview: true)
+        return ContentView()
     }
 }
 
