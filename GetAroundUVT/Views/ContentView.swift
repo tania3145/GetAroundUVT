@@ -10,12 +10,13 @@ import GoogleMaps
 
 struct ContentView: View {
     @State private var searchText = ""
+    @StateObject var mapHandler = MapHandler()
     
     var body: some View {
         TabView {
             Group {
                 ZStack {
-                    MapView()
+                    MapView(mapHandler: mapHandler)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     VStack {
                         SearchBar(text: $searchText)
@@ -28,7 +29,7 @@ struct ContentView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                // TODO
+                                mapHandler.userRequestedLocation = true
                             }, label: {
                                 Image(systemName: "location.fill")
                                     .imageScale(.large)

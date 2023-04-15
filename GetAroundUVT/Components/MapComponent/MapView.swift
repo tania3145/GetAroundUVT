@@ -25,11 +25,20 @@ struct MapViewWrapper: UIViewRepresentable {
     }
 }
 
+class MapHandler: ObservableObject {
+    @Published var userRequestedLocation: Bool = false
+}
+
 struct MapView: View {
     @StateObject var mapViewModel = MapViewModel()
+    @ObservedObject var mapHandler = MapHandler()
     
     var body: some View {
         MapViewWrapper(mapViewModel: mapViewModel)
+            .onChange(of: mapHandler.userRequestedLocation) {newValue in
+                mapViewModel.moveCameraToMyLocation()
+                mapHandler.userRequestedLocation = false
+            }
     }
 }
 
@@ -37,5 +46,6 @@ struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         return MapView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
     }
 }

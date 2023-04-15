@@ -91,6 +91,10 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         return path
     }
     
+    public func moveCameraToMyLocation() {
+        moveCameraTo(mapView.myLocation?.coordinate ?? MapViewModel.UVT_LOCATION)
+    }
+    
     public func moveCameraTo(_ location: CLLocationCoordinate2D, withAnimation: Bool = false) {
         let camera = GMSCameraPosition(
             latitude: location.latitude,
