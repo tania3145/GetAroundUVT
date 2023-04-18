@@ -21,7 +21,7 @@ struct RoomJsonData: Codable {
 }
 
 class GetAroundUVTBackendService {
-    private static let NAVIGATION_API_BASE_URL = URL(string: "https://f3d9-2a02-2f01-410f-2f00-40f6-436-2fe1-c826.ngrok-free.app")!;
+    private static let NAVIGATION_API_BASE_URL = URL(string: "https://57bc-2a02-2f01-410a-5700-e499-741d-cfc9-2508.ngrok-free.app")!;
     private static let NAVIGATION_API_PATH_METHOD = "/path";
     private static let NAVIGATION_API_POI_METHOD = "/poi";
     

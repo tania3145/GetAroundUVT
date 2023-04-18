@@ -8,8 +8,14 @@
 import SwiftUI
 import GoogleMaps
 
+//extension UIApplication {
+//    func endEditing() {
+//        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//    }
+//}
+
 struct ContentView: View {
-    @State private var searchText = ""
+    @State var searchText = ""
     @StateObject var mapHandler = MapHandler()
     
     var body: some View {

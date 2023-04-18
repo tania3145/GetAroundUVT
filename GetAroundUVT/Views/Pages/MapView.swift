@@ -31,7 +31,7 @@ class MapHandler: ObservableObject {
 
 struct MapView: View {
     @StateObject var mapViewModel = MapViewModel()
-    @ObservedObject var mapHandler = MapHandler()
+    @ObservedObject var mapHandler: MapHandler
     
     var body: some View {
         MapViewWrapper(mapViewModel: mapViewModel)
@@ -44,7 +44,7 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        return MapView()
+        return MapView(mapHandler: MapHandler())
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .ignoresSafeArea()
     }

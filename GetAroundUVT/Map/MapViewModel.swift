@@ -113,13 +113,15 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         print("tapped: \(overlay)")
         guard let room = mapRenderer.overlayToRoom(overlay) else { return }
         guard let myLocation = mapView.myLocation else { return }
-        Task {
-            do {
-                mapRenderer.highlightRoom(room)
-                let path = try await computePath(start: myLocation.coordinate, end: room.center)
-                mapRenderer.renderPath(path)
-            } catch {
-                print("Error encountered: \(error)")
+        DispatchQueue.main.async { [weak self] in
+            Task {
+                do {
+                    self?.mapRenderer.highlightRoom(room)
+                    guard let path = try await self?.computePath(start: myLocation.coordinate, end: room.center) else { return }
+                    self?.mapRenderer.renderPath(path)
+                } catch {
+                    print("Error encountered: \(error)")
+                }
             }
         }
     }
