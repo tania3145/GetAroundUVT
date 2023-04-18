@@ -49,6 +49,9 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         let mapView = GMSMapView()
         return mapView
     }()
+    @Published var showAlert: Bool = false
+    @Published var alertTitle: String = "Exception occurred"
+    @Published var alertMessage: String = ""
     
     public static let UVT_LOCATION = CLLocationCoordinate2D(latitude: 45.74717, longitude: 21.23105)
     private let DEFAULT_ZOOM_LEVEL: Float = 17.5
@@ -77,7 +80,8 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
                         self?.mapRenderer.renderBuilding(building)
                     }
                 } catch {
-                    print("ERROR ENCOUNTERED: \(error)")
+                    self?.showAlert = true
+                    self?.alertMessage = "\(error)"
                 }
             }
         }
@@ -120,7 +124,8 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
                     guard let path = try await self?.computePath(start: myLocation.coordinate, end: room.center) else { return }
                     self?.mapRenderer.renderPath(path)
                 } catch {
-                    print("Error encountered: \(error)")
+                    self?.showAlert = true
+                    self?.alertMessage = "\(error)"
                 }
             }
         }

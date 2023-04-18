@@ -23,6 +23,14 @@
 		238556A129EF2A770003DD1D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 238556A029EF2A770003DD1D /* FirebaseDatabase */; };
 		238556A329EF2A770003DD1D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 238556A229EF2A770003DD1D /* FirebaseFirestore */; };
 		238556A529EF2A770003DD1D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 238556A429EF2A770003DD1D /* FirebaseStorage */; };
+		238556A729EF2CEF0003DD1D /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556A629EF2CEF0003DD1D /* MainMenuView.swift */; };
+		238556A929EF2D050003DD1D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556A829EF2D050003DD1D /* LoginView.swift */; };
+		238556AB29EF2D1B0003DD1D /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AA29EF2D1B0003DD1D /* RegisterView.swift */; };
+		238556AD29EF2D400003DD1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AC29EF2D400003DD1D /* SettingsView.swift */; };
+		238556AF29EF2D4E0003DD1D /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AE29EF2D4E0003DD1D /* FriendsView.swift */; };
+		238556B129EF2D5A0003DD1D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B029EF2D5A0003DD1D /* CalendarView.swift */; };
+		238556B329EF2D650003DD1D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B229EF2D650003DD1D /* EventsView.swift */; };
+		238556B529EF2F410003DD1D /* SearchBarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B429EF2F410003DD1D /* SearchBarWidget.swift */; };
 		23E52AC929EAA8DE0018CA6D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E52AC829EAA8DE0018CA6D /* MapViewModel.swift */; };
 		23EA05EE29E342C300C56284 /* UVTData.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EA05ED29E342C300C56284 /* UVTData.json */; };
 		23FA048429E993B000C2E9D4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA048329E993B000C2E9D4 /* MapView.swift */; };
@@ -63,6 +71,14 @@
 		235C218529E8AB8D00AABAD2 /* UVTFakeLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UVTFakeLocation.gpx; sourceTree = "<group>"; };
 		2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTBackendService.swift; sourceTree = "<group>"; };
 		2385569929EF278D0003DD1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		238556A629EF2CEF0003DD1D /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		238556A829EF2D050003DD1D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		238556AA29EF2D1B0003DD1D /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		238556AC29EF2D400003DD1D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		238556AE29EF2D4E0003DD1D /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		238556B029EF2D5A0003DD1D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		238556B229EF2D650003DD1D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		238556B429EF2F410003DD1D /* SearchBarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarWidget.swift; sourceTree = "<group>"; };
 		23AF05B129E9CE9B0060BE48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23E52AC829EAA8DE0018CA6D /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		23EA05ED29E342C300C56284 /* UVTData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UVTData.json; sourceTree = "<group>"; };
@@ -115,6 +131,13 @@
 			children = (
 				23FA048329E993B000C2E9D4 /* MapView.swift */,
 				234F694829E2F99200A8DECC /* ContentView.swift */,
+				238556A629EF2CEF0003DD1D /* MainMenuView.swift */,
+				238556A829EF2D050003DD1D /* LoginView.swift */,
+				238556AA29EF2D1B0003DD1D /* RegisterView.swift */,
+				238556AC29EF2D400003DD1D /* SettingsView.swift */,
+				238556AE29EF2D4E0003DD1D /* FriendsView.swift */,
+				238556B029EF2D5A0003DD1D /* CalendarView.swift */,
+				238556B229EF2D650003DD1D /* EventsView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -122,6 +145,7 @@
 		231D3E3E29EF07DC00CCECA8 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				238556B429EF2F410003DD1D /* SearchBarWidget.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -498,11 +522,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238556B329EF2D650003DD1D /* EventsView.swift in Sources */,
+				238556B529EF2F410003DD1D /* SearchBarWidget.swift in Sources */,
+				238556AB29EF2D1B0003DD1D /* RegisterView.swift in Sources */,
 				234F694929E2F99200A8DECC /* ContentView.swift in Sources */,
+				238556B129EF2D5A0003DD1D /* CalendarView.swift in Sources */,
+				238556A729EF2CEF0003DD1D /* MainMenuView.swift in Sources */,
 				2381EA1329E5D93D00AF0CBB /* GetAroundUVTBackendService.swift in Sources */,
 				23FA048429E993B000C2E9D4 /* MapView.swift in Sources */,
+				238556AD29EF2D400003DD1D /* SettingsView.swift in Sources */,
 				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,
 				23356C9D29EA22CD00809DEC /* MapsRenderUtils.swift in Sources */,
+				238556AF29EF2D4E0003DD1D /* FriendsView.swift in Sources */,
+				238556A929EF2D050003DD1D /* LoginView.swift in Sources */,
 				23E52AC929EAA8DE0018CA6D /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,6 +706,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -707,6 +740,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

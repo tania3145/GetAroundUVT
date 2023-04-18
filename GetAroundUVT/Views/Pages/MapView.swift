@@ -25,26 +25,54 @@ struct MapViewWrapper: UIViewRepresentable {
     }
 }
 
-class MapHandler: ObservableObject {
-    @Published var userRequestedLocation: Bool = false
-}
-
 struct MapView: View {
     @StateObject var mapViewModel = MapViewModel()
-    @ObservedObject var mapHandler: MapHandler
+    @State var searchedText = ""
     
     var body: some View {
-        MapViewWrapper(mapViewModel: mapViewModel)
-            .onChange(of: mapHandler.userRequestedLocation) {newValue in
-                mapViewModel.moveCameraToMyLocation()
-                mapHandler.userRequestedLocation = false
+        ZStack {
+            MapViewWrapper(mapViewModel: mapViewModel)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack {
+                SearchBarWidget(text: $searchedText)
+                    .padding(.top, 50)
+                    .shadow(color: Color.gray, radius: 10, x: 5, y: 5)
+                Spacer()
             }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        mapViewModel.moveCameraToMyLocation()
+                    }, label: {
+                        Image(systemName: "location.fill")
+                            .imageScale(.large)
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(Color.white)
+                    })
+                    .background(Color.blue)
+                    .cornerRadius(38.5)
+                    .padding()
+                    .shadow(color: Color.black.opacity(0.3),
+                            radius: 3,
+                            x: 3,
+                            y: 3)
+                }
+            }.edgesIgnoringSafeArea(.top)
+        }.alert(isPresented: $mapViewModel.showAlert) {
+            Alert(
+                title: Text(mapViewModel.alertTitle),
+                message: Text(mapViewModel.alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        return MapView(mapHandler: MapHandler())
+        return MapView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .ignoresSafeArea()
     }
