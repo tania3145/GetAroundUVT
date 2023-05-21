@@ -43,6 +43,8 @@ struct MainMenuView: View {
                 }
                 .tag(5)
         }
+        .accentColor(Color(red: 0.859, green: 0.678, blue: 0.273))
+//        .accentColor(Color(red: 0.115, green: 0.287, blue: 0.448))
     }
 }
 

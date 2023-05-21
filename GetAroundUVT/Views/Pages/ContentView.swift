@@ -11,7 +11,7 @@ import GoogleMaps
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            LoginView()
+            LoginSignupView()
         }
     }
 }

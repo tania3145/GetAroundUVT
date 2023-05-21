@@ -21,7 +21,7 @@ struct SettingsView: View {
                 Text("Go to Login")
             }
             .navigationDestination(isPresented: $navigateToLogin) {
-                LoginView()
+                LoginSignupView()
                     .navigationBarBackButtonHidden(true)
             }
         }
