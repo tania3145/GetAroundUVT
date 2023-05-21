@@ -7,10 +7,20 @@
 
 import SwiftUI
 
+enum FormField: Hashable {
+    case loginEmailField
+    case loginPasswordField
+    case registerNameField
+    case registerEmailField
+    case registerPasswordField
+    case registerConfirmPasswordField
+}
+
 struct LoginSignupView: View {
     @State var navigateToMainMenu : Bool = false
     @State var navigateToRegister : Bool = false
     @State var index = 0
+    @FocusState private var focusedField: FormField?
     
     @ViewBuilder
     var body: some View {
@@ -23,10 +33,10 @@ struct LoginSignupView: View {
                     .frame(width: 150, height: 130)
                     
                 ZStack{
-                    SignupView(index: self.$index)
+                    SignupView(index: self.$index, focusedField: $focusedField)
                         // changing view order
                         .zIndex(Double(self.index))
-                    LoginView(index: self.$index)
+                    LoginView(index: self.$index, focusedField: $focusedField)
                 }
                 
                 HStack(spacing: 15){
@@ -69,20 +79,23 @@ struct LoginSignupView: View {
             }
             .background(Color("Color 3").edgesIgnoringSafeArea(.all))
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    focusedField = nil
+                }
+            }
+        }
     }
 }
 
 // Login Page
 struct LoginView: View {
-    enum Field: Hashable {
-        case emailField
-        case passwordField
-    }
-    
     @State var email = ""
     @State var password = ""
     @Binding var index : Int
-    @FocusState private var focusedField: Field?
+    var focusedField: FocusState<FormField?>.Binding
 
     var body: some View{
         ZStack(alignment: .bottom) {
@@ -105,27 +118,20 @@ struct LoginView: View {
                 VStack {
                     CustomTextFieldView(text: $email, placeholder: "Email Address", icon: "envelope.fill")
                         .keyboardType(.emailAddress)
-                        .focused($focusedField, equals: .emailField)
+                        .focused(focusedField, equals: .loginEmailField)
                         .submitLabel(.next)
                         .padding(.top, 70)
                     
                     CustomTextFieldView(text: $password, placeholder: "Password", icon: "eye.slash.fill", isSecure: true)
-                        .focused($focusedField, equals: .passwordField)
+                        .focused(focusedField, equals: .loginPasswordField)
                         .padding(.top, 30)
                         .submitLabel(.done)
                 }.onSubmit {
-                    switch focusedField {
-                        case .emailField:
-                            focusedField = .passwordField
+                    switch focusedField.wrappedValue {
+                        case .loginEmailField:
+                            focusedField.wrappedValue = .loginPasswordField
                         default:
-                            focusedField = nil
-                    }
-                }.toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            focusedField = nil
-                        }
+                        focusedField.wrappedValue = nil
                     }
                 }
                 
@@ -209,19 +215,12 @@ struct CShape: Shape {
 
 // Signup Page
 struct SignupView: View {
-    enum Field: Hashable {
-        case nameField
-        case emailField
-        case passwordField
-        case confirmPasswordField
-    }
-    
     @State var name = ""
     @State var email = ""
     @State var password = ""
     @State var rePassword = ""
     @Binding var index : Int
-    @FocusState private var focusedField: Field?
+    var focusedField: FocusState<FormField?>.Binding
     
     var body: some View{
         ZStack(alignment: .bottom){
@@ -244,42 +243,35 @@ struct SignupView: View {
                 
                 VStack {
                     CustomTextFieldView(text: $name, placeholder: "Name", icon: "person.crop.circle.badge.fill", autoCap: .sentences)
-                        .focused($focusedField, equals: .nameField)
+                        .focused(focusedField, equals: .registerNameField)
                         .submitLabel(.next)
                         .padding(.top, 40)
                     
                     CustomTextFieldView(text: $email, placeholder: "Email Address", icon: "envelope.fill")
                         .keyboardType(.emailAddress)
-                        .focused($focusedField, equals: .emailField)
+                        .focused(focusedField, equals: .registerEmailField)
                         .submitLabel(.next)
                         .padding(.top, 30)
                     
                     CustomTextFieldView(text: $password, placeholder: "Password", icon: "eye.slash.fill", isSecure: true)
-                        .focused($focusedField, equals: .passwordField)
+                        .focused(focusedField, equals: .registerPasswordField)
                         .padding(.top, 30)
                         .submitLabel(.next)
                     
                     CustomTextFieldView(text: $rePassword, placeholder: "Confirm Password", icon: "eye.slash.fill", isSecure: true)
-                        .focused($focusedField, equals: .passwordField)
+                        .focused(focusedField, equals: .registerConfirmPasswordField)
                         .padding(.top, 30)
                         .submitLabel(.done)
                 }.onSubmit {
-                    switch focusedField {
-                        case .nameField:
-                            focusedField = .emailField
-                        case .emailField:
-                            focusedField = .passwordField
-                        case .passwordField:
-                            focusedField = .confirmPasswordField
+                    switch focusedField.wrappedValue {
+                        case .registerNameField:
+                            focusedField.wrappedValue = .registerEmailField
+                        case .registerEmailField:
+                            focusedField.wrappedValue = .registerPasswordField
+                        case .registerPasswordField:
+                            focusedField.wrappedValue = .registerConfirmPasswordField
                         default:
-                            focusedField = nil
-                    }
-                }.toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            focusedField = nil
-                        }
+                            focusedField.wrappedValue = nil
                     }
                 }
                 
