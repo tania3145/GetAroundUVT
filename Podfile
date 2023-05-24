@@ -8,7 +8,9 @@ target 'GetAroundUVT' do
   # Pods for GetAroundUVT
   pod 'GoogleMaps', '7.4.0'
   pod 'Google-Maps-iOS-Utils', '~> 4.1.0'
-
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  
   target 'GetAroundUVTTests' do
     inherit! :search_paths
     # Pods for testing

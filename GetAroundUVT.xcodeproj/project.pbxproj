@@ -26,10 +26,6 @@
 		2385569A29EF278D0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
 		2385569B29EF27ED0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
 		2385569C29EF27ED0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
-		2385569F29EF2A770003DD1D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2385569E29EF2A770003DD1D /* FirebaseAuth */; };
-		238556A129EF2A770003DD1D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 238556A029EF2A770003DD1D /* FirebaseDatabase */; };
-		238556A329EF2A770003DD1D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 238556A229EF2A770003DD1D /* FirebaseFirestore */; };
-		238556A529EF2A770003DD1D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 238556A429EF2A770003DD1D /* FirebaseStorage */; };
 		238556A729EF2CEF0003DD1D /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556A629EF2CEF0003DD1D /* MainMenuView.swift */; };
 		238556AD29EF2D400003DD1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AC29EF2D400003DD1D /* SettingsView.swift */; };
 		238556AF29EF2D4E0003DD1D /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AE29EF2D4E0003DD1D /* FriendsView.swift */; };
@@ -113,11 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				238556A129EF2A770003DD1D /* FirebaseDatabase in Frameworks */,
-				238556A329EF2A770003DD1D /* FirebaseFirestore in Frameworks */,
 				6EB571223A091661283D16CA /* Pods_GetAroundUVT.framework in Frameworks */,
-				238556A529EF2A770003DD1D /* FirebaseStorage in Frameworks */,
-				2385569F29EF2A770003DD1D /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,18 +344,13 @@
 				234F694029E2F99200A8DECC /* Frameworks */,
 				234F694129E2F99200A8DECC /* Resources */,
 				4AAF33F379E25A8EBE37FD77 /* [CP] Copy Pods Resources */,
+				60E8968BE192993D5073042D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GetAroundUVT;
-			packageProductDependencies = (
-				2385569E29EF2A770003DD1D /* FirebaseAuth */,
-				238556A029EF2A770003DD1D /* FirebaseDatabase */,
-				238556A229EF2A770003DD1D /* FirebaseFirestore */,
-				238556A429EF2A770003DD1D /* FirebaseStorage */,
-			);
 			productName = GetAroundUVT;
 			productReference = 234F694329E2F99200A8DECC /* GetAroundUVT.app */;
 			productType = "com.apple.product-type.application";
@@ -396,6 +383,7 @@
 				234F695A29E2F99400A8DECC /* Frameworks */,
 				234F695B29E2F99400A8DECC /* Resources */,
 				044286D77F3B4968B35C89F5 /* [CP] Copy Pods Resources */,
+				C510565C2915D947A23401E8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -561,6 +549,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60E8968BE192993D5073042D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT/Pods-GetAroundUVT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C510565C2915D947A23401E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetAroundUVT-GetAroundUVTUITests/Pods-GetAroundUVT-GetAroundUVTUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FB713EAA556B55B65BC66CDF /* [CP] Check Pods Manifest.lock */ = {
@@ -963,29 +985,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		2385569E29EF2A770003DD1D /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2385569D29EF2A770003DD1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		238556A029EF2A770003DD1D /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2385569D29EF2A770003DD1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		238556A229EF2A770003DD1D /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2385569D29EF2A770003DD1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		238556A429EF2A770003DD1D /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2385569D29EF2A770003DD1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 234F693B29E2F99200A8DECC /* Project object */;
 }

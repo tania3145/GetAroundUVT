@@ -9,9 +9,24 @@ import SwiftUI
 import GoogleMaps
 
 struct ContentView: View {
+    @State private var requireLogin: Bool = true
+    
     var body: some View {
-        NavigationStack {
-            LoginSignupView()
+        registerSignInState()
+        return NavigationStack {
+            if requireLogin {
+                LoginSignupView()
+            } else {
+                MainMenuView()
+            }
+        }
+    }
+    
+    private func registerSignInState() {
+        let service = GetAroundUVTBackendService.Instance()
+        service.addAuthListener { loggedIn in
+            print(loggedIn)
+            requireLogin = !loggedIn
         }
     }
 }

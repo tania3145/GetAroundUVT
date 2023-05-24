@@ -61,7 +61,7 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
     private var building: Building?
     
     override init() {
-        backendService = GetAroundUVTBackendService()
+        backendService = GetAroundUVTBackendService.Instance()
         super.init()
         mapRenderer = MapRenderer(mapView: mapView)
         

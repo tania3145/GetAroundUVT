@@ -90,11 +90,17 @@ struct LoginSignupView: View {
     }
 }
 
+class LoginForm : ObservableObject {
+    var email = TextFieldItem()
+    var password = TextFieldItem()
+}
+
 // Login Page
 struct LoginView: View {
-    @State var email = ""
-    @State var password = ""
+    @StateObject var loginForm = LoginForm()
     @Binding var index : Int
+    @State var showAlert: Bool = false
+    @State var errorMessage: String = ""
     var focusedField: FocusState<FormField?>.Binding
 
     var body: some View{
@@ -116,13 +122,13 @@ struct LoginView: View {
                 .padding(.top, 30) // for top curve
                 
                 VStack {
-                    CustomTextFieldView(text: $email, placeholder: "Email Address", icon: "envelope.fill")
+                    CustomTextFieldView(fieldItem: loginForm.email, placeholder: "Email Address", icon: "envelope.fill")
                         .keyboardType(.emailAddress)
                         .focused(focusedField, equals: .loginEmailField)
                         .submitLabel(.next)
                         .padding(.top, 70)
                     
-                    CustomTextFieldView(text: $password, placeholder: "Password", icon: "eye.slash.fill", isSecure: true)
+                    CustomTextFieldView(fieldItem: loginForm.password, placeholder: "Password", icon: "eye.slash.fill", isSecure: true)
                         .focused(focusedField, equals: .loginPasswordField)
                         .padding(.top, 30)
                         .submitLabel(.done)
@@ -179,7 +185,11 @@ struct LoginView: View {
             
             // LOG IN Button
             Button(action: {
-                
+                DispatchQueue.main.async {
+                    Task {
+                        await signIn()
+                    }
+                }
             }) {
                 Text("LOG IN")
                     .foregroundColor(.white)
@@ -195,7 +205,22 @@ struct LoginView: View {
             .offset(y: 25)
             // hiding view when  its in background
             .opacity(self.index == 0 ? 1 : 0)
-
+        }.alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Exception occurred"),
+                message: Text(errorMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+    }
+    
+    private func signIn() async {
+        do {
+            let service = GetAroundUVTBackendService.Instance()
+            try await service.signIn(email: loginForm.email.value, password: loginForm.password.value)
+        } catch {
+            showAlert = true
+            errorMessage = error.localizedDescription
         }
     }
 }
@@ -214,13 +239,93 @@ struct CShape: Shape {
     }
 }
 
+class SignupForm : ObservableObject {
+    @Published var name: TextFieldItem!
+    @Published var email: TextFieldItem!
+    @Published var password: TextFieldItem!
+    @Published var rePassword: TextFieldItem!
+    private var allValidations: [() -> Bool]!
+    
+    init() {
+        name = TextFieldItem { field in
+            field.errorMessage = ""
+            
+            if (field.value.isEmpty) {
+                field.errorMessage = "Name should not be empty."
+                return false
+            }
+            
+            return true
+        }
+        email = TextFieldItem { field in
+            field.errorMessage = ""
+            
+            if (field.value.isEmpty) {
+                field.errorMessage = "Email should not be empty."
+                return false
+            }
+            
+            if (!SignupForm.isValidEmail(field.value)) {
+                field.errorMessage = "Invalid email address."
+                return false
+            }
+            
+            return true
+        }
+        password = TextFieldItem { field in
+            field.errorMessage = ""
+            
+            if (field.value.isEmpty) {
+                field.errorMessage = "Password should not be empty."
+                return false
+            }
+            
+            if (field.value.count < 6) {
+                field.errorMessage = "Passwrod should be at least 6 characters."
+                return false
+            }
+            
+            return true
+        }
+        rePassword = TextFieldItem { field in
+            field.errorMessage = ""
+            
+            if field.value != self.password.value {
+                field.errorMessage = "Password do not match."
+                return false
+            }
+            
+            return true
+        }
+        allValidations = [
+            name.validate,
+            email.validate,
+            password.validate,
+            rePassword.validate
+        ]
+    }
+    
+    static func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func validateAll(_ until: Int? = nil) -> Bool {
+        return allValidations.enumerated()
+            .filter({el in el.offset < (until ?? allValidations.count)})
+            .map({el in el.element()})
+            .reduce(true, {res, next in res && next})
+    }
+}
+
 // Signup Page
 struct SignupView: View {
-    @State var name = ""
-    @State var email = ""
-    @State var password = ""
-    @State var rePassword = ""
+    @StateObject var signupForm = SignupForm()
     @Binding var index : Int
+    @State var showAlert: Bool = false
+    @State var errorMessage: String = ""
     var focusedField: FocusState<FormField?>.Binding
     
     var body: some View{
@@ -243,23 +348,23 @@ struct SignupView: View {
                 .padding(.top, 30) // for top curve...
                 
                 VStack {
-                    CustomTextFieldView(text: $name, placeholder: "Name", icon: "person.crop.circle.badge.fill", autoCap: .sentences)
+                    CustomTextFieldView(fieldItem: signupForm.name, placeholder: "Name", icon: "person.crop.circle.badge.fill", autoCap: .sentences)
                         .focused(focusedField, equals: .registerNameField)
                         .submitLabel(.next)
                         .padding(.top, 40)
                     
-                    CustomTextFieldView(text: $email, placeholder: "Email Address", icon: "envelope.fill")
+                    CustomTextFieldView(fieldItem: signupForm.email, placeholder: "Email Address", icon: "envelope.fill")
                         .keyboardType(.emailAddress)
                         .focused(focusedField, equals: .registerEmailField)
                         .submitLabel(.next)
                         .padding(.top, 30)
                     
-                    CustomTextFieldView(text: $password, placeholder: "Password", icon: "eye.slash.fill", isSecure: true)
+                    CustomTextFieldView(fieldItem: signupForm.password, placeholder: "Password", icon: "eye.slash.fill", isSecure: true)
                         .focused(focusedField, equals: .registerPasswordField)
                         .padding(.top, 30)
                         .submitLabel(.next)
                     
-                    CustomTextFieldView(text: $rePassword, placeholder: "Confirm Password", icon: "eye.slash.fill", isSecure: true)
+                    CustomTextFieldView(fieldItem: signupForm.rePassword, placeholder: "Confirm Password", icon: "eye.slash.fill", isSecure: true)
                         .focused(focusedField, equals: .registerConfirmPasswordField)
                         .padding(.top, 30)
                         .submitLabel(.done)
@@ -267,12 +372,16 @@ struct SignupView: View {
                     switch focusedField.wrappedValue {
                         case .registerNameField:
                             focusedField.wrappedValue = .registerEmailField
+                            _ = signupForm.validateAll(1)
                         case .registerEmailField:
                             focusedField.wrappedValue = .registerPasswordField
+                            _ = signupForm.validateAll(2)
                         case .registerPasswordField:
                             focusedField.wrappedValue = .registerConfirmPasswordField
+                            _ = signupForm.validateAll(3)
                         default:
                             focusedField.wrappedValue = nil
+                            _ = signupForm.validateAll()
                     }
                 }
                 
@@ -294,7 +403,11 @@ struct SignupView: View {
             
             // Button
             Button(action: {
-                
+                DispatchQueue.main.async {
+                    Task {
+                        await signUp()
+                    }
+                }
             }) {
                 Text("SIGN UP")
                     .foregroundColor(.white)
@@ -310,6 +423,26 @@ struct SignupView: View {
             .offset(y: 25)
             // hiding view when  its in background
             .opacity(self.index == 1 ? 1 : 0)
+        }.alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Exception occurred"),
+                message: Text(errorMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+    }
+    
+    func signUp() async {
+        if (!signupForm.validateAll()) {
+            return
+        }
+        do {
+            let service = GetAroundUVTBackendService.Instance()
+            try await service.createUser(name: signupForm.name.value, email: signupForm.email.value, password: signupForm.password.value)
+            try await service.signIn(email: signupForm.email.value, password: signupForm.password.value)
+        } catch {
+            showAlert = true
+            errorMessage = error.localizedDescription
         }
     }
 }
