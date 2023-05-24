@@ -177,7 +177,7 @@ struct LoginView: View {
             .cornerRadius(35)
             .padding(.horizontal, 20)
             
-            // Button
+            // LOG IN Button
             Button(action: {
                 
             }) {
@@ -195,6 +195,7 @@ struct LoginView: View {
             .offset(y: 25)
             // hiding view when  its in background
             .opacity(self.index == 0 ? 1 : 0)
+
         }
     }
 }

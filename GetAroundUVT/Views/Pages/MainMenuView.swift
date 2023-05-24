@@ -18,10 +18,10 @@ struct MainMenuView: View {
                     Label("Calendar", systemImage: "calendar")
                 }
                 .tag(1)
-            EventsView()
-                .edgesIgnoringSafeArea(.top)
+            PostsView()
+//                .edgesIgnoringSafeArea(.top)
                 .tabItem {
-                    Label("Events", systemImage: "graduationcap")
+                    Label("Posts", systemImage: "graduationcap")
                 }
                 .tag(2)
             MapView()

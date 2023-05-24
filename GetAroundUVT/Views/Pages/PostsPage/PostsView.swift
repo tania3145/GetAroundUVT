@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct EventsView: View {
+struct PostsView: View {
     var body: some View {
-        Text("Events")
+        FeedView(feed: [.demo1, .demo2, .demo3, .demo4])
+//        FeedView()
     }
 }
 
-struct EventsView_Previews: PreviewProvider {
+struct PostsView_Previews: PreviewProvider {
     static var previews: some View {
-        EventsView()
+        PostsView()
     }
 }
