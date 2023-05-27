@@ -7,8 +7,8 @@
 
 import Foundation
 import GoogleMaps
-//import FirebaseAuth
-//import FirebaseFirestore
+import FirebaseAuth
+import FirebaseFirestore
 
 extension CLLocationCoordinate2D {
     func toQueryItem(_ name: String, level: Int = 0) -> URLQueryItem {
@@ -74,24 +74,24 @@ class GetAroundUVTBackendService {
     }
     
     func createUser(name: String, email: String, password: String) async throws {
-//        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
-//        try await Firestore.firestore().collection("users").document(authResult.user.uid).setData([
-//            "name": name,
-//            "email": email
-//        ])
+        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        try await Firestore.firestore().collection("users").document(authResult.user.uid).setData([
+            "name": name,
+            "email": email
+        ])
     }
     
     func signIn(email: String, password: String) async throws {
-//        try await Auth.auth().signIn(withEmail: email, password: password)
+        try await Auth.auth().signIn(withEmail: email, password: password)
     }
     
     func signOut() throws {
-//        try Auth.auth().signOut()
+        try Auth.auth().signOut()
     }
     
     func addAuthListener(lambda: @escaping (Bool) -> Void) {
-//        Auth.auth().addStateDidChangeListener { auth, user in
-//            lambda(user != nil)
-//        }
+        Auth.auth().addStateDidChangeListener { auth, user in
+            lambda(user != nil)
+        }
     }
 }
