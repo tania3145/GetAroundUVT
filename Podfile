@@ -8,11 +8,9 @@ target 'GetAroundUVT' do
   # Pods for GetAroundUVT
   pod 'GoogleMaps', '7.4.0'
   pod 'Google-Maps-iOS-Utils', '~> 4.1.0'
-  pod 'GTMSessionFetcher', :modular_headers => true
-  pod 'GoogleAPIClientForREST', '~> 1.2.1'
-  pod 'GoogleSignIn', '~> 4.1.1'
   pod 'FirebaseAuth', '~> 9.6.0'
   pod 'FirebaseFirestore', '~> 9.6.0'
+  pod 'SwiftSoup'
   
   target 'GetAroundUVTTests' do
     inherit! :search_paths

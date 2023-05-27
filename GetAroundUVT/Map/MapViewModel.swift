@@ -57,11 +57,11 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
     private let DEFAULT_ZOOM_LEVEL: Float = 17.5
     
     private var mapRenderer: MapRenderer!
-    private let backendService: GetAroundUVTBackendService
+    private let backendService: NavigationService
     private var building: Building?
     
     override init() {
-        backendService = GetAroundUVTBackendService.Instance()
+        backendService = NavigationService.Instance()
         super.init()
         mapRenderer = MapRenderer(mapView: mapView)
         

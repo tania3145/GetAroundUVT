@@ -7,8 +7,6 @@
 
 import Foundation
 import GoogleMaps
-import FirebaseAuth
-import FirebaseFirestore
 
 extension CLLocationCoordinate2D {
     func toQueryItem(_ name: String, level: Int = 0) -> URLQueryItem {
@@ -22,16 +20,16 @@ struct RoomJsonData: Codable {
     public let coordinates: [[Double]]
 }
 
-class GetAroundUVTBackendService {
+class NavigationService {
     private static let NAVIGATION_API_BASE_URL = URL(string: "https://57bc-2a02-2f01-410a-5700-e499-741d-cfc9-2508.ngrok-free.app")!;
     private static let NAVIGATION_API_PATH_METHOD = "/path";
     private static let NAVIGATION_API_POI_METHOD = "/poi";
     
-    private static var instance: GetAroundUVTBackendService?
+    private static var instance: NavigationService?
     
-    public static func Instance() -> GetAroundUVTBackendService {
+    public static func Instance() -> NavigationService {
         if (instance == nil) {
-            instance = GetAroundUVTBackendService()
+            instance = NavigationService()
         }
         return instance!
     }
@@ -40,7 +38,7 @@ class GetAroundUVTBackendService {
     }
     
     private func getJson<T>(_ path: String, queryItems: [URLQueryItem] = []) async throws -> T where T: Decodable {
-        let baseUrl = GetAroundUVTBackendService.NAVIGATION_API_BASE_URL
+        let baseUrl = NavigationService.NAVIGATION_API_BASE_URL
             .appendingPathComponent(path)
             .appending(queryItems: queryItems)
         let urlRequest = URLRequest(url: baseUrl)
@@ -51,7 +49,7 @@ class GetAroundUVTBackendService {
     
     func getRooms() async throws -> [Room] {
         var rooms: [Room] = []
-        let data: Array<RoomJsonData> = try await getJson(GetAroundUVTBackendService.NAVIGATION_API_POI_METHOD)
+        let data: Array<RoomJsonData> = try await getJson(NavigationService.NAVIGATION_API_POI_METHOD)
         
         for row in data {
             let convertedPoints = row.coordinates.map { el in
@@ -67,31 +65,9 @@ class GetAroundUVTBackendService {
     }
     
     func getPath(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) async throws -> Path {
-        let data: [[Double]] = try await getJson(GetAroundUVTBackendService.NAVIGATION_API_PATH_METHOD, queryItems: [start.toQueryItem("start"), end.toQueryItem("end")])
+        let data: [[Double]] = try await getJson(NavigationService.NAVIGATION_API_PATH_METHOD, queryItems: [start.toQueryItem("start"), end.toQueryItem("end")])
         return Path(points: data.map { point in
             return Point(coordinates: CLLocationCoordinate2D(latitude: point[0], longitude: point[1]), level: Int(point[2]))
         })
-    }
-    
-    func createUser(name: String, email: String, password: String) async throws {
-        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
-        try await Firestore.firestore().collection("users").document(authResult.user.uid).setData([
-            "name": name,
-            "email": email
-        ])
-    }
-    
-    func signIn(email: String, password: String) async throws {
-        try await Auth.auth().signIn(withEmail: email, password: password)
-    }
-    
-    func signOut() throws {
-        try Auth.auth().signOut()
-    }
-    
-    func addAuthListener(lambda: @escaping (Bool) -> Void) {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            lambda(user != nil)
-        }
     }
 }

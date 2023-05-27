@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarContent: View {
-    @StateObject var eventModel: EventViewModel = EventViewModel()
+    @ObservedObject var eventModel: EventViewModel
     @Namespace var animation
     
     var body: some View {
@@ -91,7 +91,7 @@ struct CalendarContent: View {
                 }
                 else{
                     ForEach(events){event in
-                        EventsCardView(events: event)
+                        EventsCardView(event: event)
                     }
                 }
             }
@@ -110,7 +110,7 @@ struct CalendarContent: View {
     }
     
     // MARK: Events Card View
-    func EventsCardView(events: Event)->some View {
+    func EventsCardView(event: Event) -> some View {
         HStack(alignment: .top, spacing: 30){
             VStack(spacing: 10){
                 Circle()
@@ -130,39 +130,47 @@ struct CalendarContent: View {
             VStack{
                 HStack(alignment: .top, spacing: 10){
                     VStack(alignment: .leading, spacing: 12){
-                        Text(events.eventTitle)
+                        Text(event.eventTitle)
                             .font(.title2.bold())
-                        Text(events.eventDescription)
-                            .font(.title3.bold())
+                        if event.eventDescription != nil {
+                            Text(event.getParsedEventDescription() ?? "")
+                                .font(.title3.bold())
+                        }
                         //                            .font(.callout)
                         //                            .foregroundColor(.secondary)
                         
                     }
                     .hLeading()
-                    
-                    Text(events.eventDate.formatted(date: .omitted, time: .shortened))
-                }
-                    
-                // MARK: Location
-                HStack(spacing: 0){
-                    HStack(){
-                        Text("Location: ")
-                        Text(events.eventLocation)
-                            .font(.title2.bold())
+                    if (event.isAllDay) {
+                        Text("All day")
+                    } else {
+                        Text(event.eventDate.formatted(date: .omitted, time: .shortened))
                     }
-                    .hLeading()
-                    
-                    // MARK: Get Directions Button
-                    Button(action: {
-                                        
-                    }) {
-                        Text("Get Directions")
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color(red: 0.859, green: 0.678, blue: 0.273))
-                            .cornerRadius(10)
-                            .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                }
+                if event.eventLocation != nil {
+                    // MARK: Location
+                    HStack(spacing: 0){
+                        VStack(){
+                            HStack {
+                                Text("Location")
+                                Spacer()
+                                // MARK: Get Directions Button
+                                Button(action: {
+                                    
+                                }) {
+                                    Text("Get Directions")
+                                        .foregroundColor(.white)
+                                        .padding(10)
+                                        .background(Color(red: 0.859, green: 0.678, blue: 0.273))
+                                        .cornerRadius(10)
+                                        .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                                }
+                            }
+                            Text(event.getParsedEventLocation() ?? "")
+                                .font(.title2.bold())
                         }
+                        .hLeading()
+                    }
                 }
             }
             .foregroundColor(.white)
@@ -213,7 +221,7 @@ struct CalendarContent: View {
 
 struct CalendarContent_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarContent()
+        CalendarContent(eventModel: EventViewModel())
     }
 }
 

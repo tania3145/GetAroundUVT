@@ -216,7 +216,7 @@ struct LoginView: View {
     
     private func signIn() async {
         do {
-            let service = GetAroundUVTBackendService.Instance()
+            let service = FirebaseService.Instance()
             try await service.signIn(email: loginForm.email.value, password: loginForm.password.value)
         } catch {
             showAlert = true
@@ -437,7 +437,7 @@ struct SignupView: View {
             return
         }
         do {
-            let service = GetAroundUVTBackendService.Instance()
+            let service = FirebaseService.Instance()
             try await service.createUser(name: signupForm.name.value, email: signupForm.email.value, password: signupForm.password.value)
             try await service.signIn(email: signupForm.email.value, password: signupForm.password.value)
         } catch {

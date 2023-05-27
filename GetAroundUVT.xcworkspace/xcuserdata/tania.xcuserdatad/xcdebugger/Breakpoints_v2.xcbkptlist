@@ -46,8 +46,8 @@
             filePath = "GetAroundUVT/Services/GetAroundUVTBackendService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "getPath(start:end:)"
             landmarkType = "7">
          </BreakpointContent>

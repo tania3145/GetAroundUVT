@@ -31,7 +31,7 @@ struct SettingsView: View {
     
     private func signOut() {
         do {
-            let service = GetAroundUVTBackendService.Instance()
+            let service = FirebaseService.Instance()
             try service.signOut()
         } catch {
             showAlert = true

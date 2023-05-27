@@ -12,30 +12,30 @@ class EventViewModel: ObservableObject {
     // Sample Events
     @Published var storedEvents: [Event] = [
         
-        // 21 May
-        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684668052), eventLocation: "003"),
-        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684661452), eventLocation: "A02"),
-        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684692052), eventLocation: "105"),
-        Event(eventTitle: "Metode Numerice", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684680052), eventLocation: "AM"),
-        
-        // 22 May
-        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684778452), eventLocation: "AM"),
-        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684772452), eventLocation: "103"),
-        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684784452), eventLocation: "003"),
-        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684748452), eventLocation: "105"),
-        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684760452), eventLocation: "AM"),
-        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684789852), eventLocation: "003"),
-        
-        // 23 May
-        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684858852), eventLocation: "A02"),
-        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684870852), eventLocation: "105"),
-        Event(eventTitle: "Metode Numerice", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684846852), eventLocation: "AM"),
-        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684834852), eventLocation: "AM"),
-        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684876252), eventLocation: "103"),
-        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684858852), eventLocation: "003"),
-        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684840852), eventLocation: "105"),
-        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684828852), eventLocation: "AM"),
-
+//        // 21 May
+//        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684668052), eventLocation: "003"),
+//        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684661452), eventLocation: "A02"),
+//        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684692052), eventLocation: "105"),
+//        Event(eventTitle: "Metode Numerice", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684680052), eventLocation: "AM"),
+//        
+//        // 22 May
+//        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684778452), eventLocation: "AM"),
+//        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684772452), eventLocation: "103"),
+//        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684784452), eventLocation: "003"),
+//        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684748452), eventLocation: "105"),
+//        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684760452), eventLocation: "AM"),
+//        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684789852), eventLocation: "003"),
+//        
+//        // 23 May
+//        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684858852), eventLocation: "A02"),
+//        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684870852), eventLocation: "105"),
+//        Event(eventTitle: "Metode Numerice", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684846852), eventLocation: "AM"),
+//        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684834852), eventLocation: "AM"),
+//        Event(eventTitle: "Securitate si Criptografie", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684876252), eventLocation: "103"),
+//        Event(eventTitle: "Metode Numerice", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684858852), eventLocation: "003"),
+//        Event(eventTitle: "Prelucrarea Imaginilor", eventDescription: "Lab", eventDate: .init(timeIntervalSince1970: 1684840852), eventLocation: "105"),
+//        Event(eventTitle: "Grafica si Interfete Utilizator", eventDescription: "Lecture", eventDate: .init(timeIntervalSince1970: 1684828852), eventLocation: "AM"),
+//
 
     ]
     

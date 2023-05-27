@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		233249962A221C820056A2D1 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233249952A221C820056A2D1 /* CalendarService.swift */; };
+		233249982A221C8E0056A2D1 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233249972A221C8E0056A2D1 /* FirebaseService.swift */; };
 		23356C9D29EA22CD00809DEC /* MapsRenderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23356C9C29EA22CD00809DEC /* MapsRenderUtils.swift */; };
 		234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */; };
 		234F694929E2F99200A8DECC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F694829E2F99200A8DECC /* ContentView.swift */; };
@@ -22,7 +24,7 @@
 		237371032A1D4A8A00F911A1 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237371022A1D4A8A00F911A1 /* FeedView.swift */; };
 		237371052A1D4E2D00F911A1 /* SocialNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237371042A1D4E2D00F911A1 /* SocialNetworkView.swift */; };
 		237371092A1D656700F911A1 /* FeedTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237371082A1D656700F911A1 /* FeedTileView.swift */; };
-		2381EA1329E5D93D00AF0CBB /* GetAroundUVTBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */; };
+		2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EA1229E5D93D00AF0CBB /* NavigationService.swift */; };
 		2385569A29EF278D0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
 		2385569B29EF27ED0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
 		2385569C29EF27ED0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
@@ -60,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		233249952A221C820056A2D1 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		233249972A221C8E0056A2D1 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		23356C9C29EA22CD00809DEC /* MapsRenderUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsRenderUtils.swift; sourceTree = "<group>"; };
 		234F694329E2F99200A8DECC /* GetAroundUVT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetAroundUVT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		234F694629E2F99200A8DECC /* GetAroundUVTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTApp.swift; sourceTree = "<group>"; };
@@ -79,7 +83,7 @@
 		237371022A1D4A8A00F911A1 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		237371042A1D4E2D00F911A1 /* SocialNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNetworkView.swift; sourceTree = "<group>"; };
 		237371082A1D656700F911A1 /* FeedTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTileView.swift; sourceTree = "<group>"; };
-		2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAroundUVTBackendService.swift; sourceTree = "<group>"; };
+		2381EA1229E5D93D00AF0CBB /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		2385569929EF278D0003DD1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		238556A629EF2CEF0003DD1D /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		238556AC29EF2D400003DD1D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -295,7 +299,9 @@
 		23EA05E929E33C4200C56284 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				2381EA1229E5D93D00AF0CBB /* GetAroundUVTBackendService.swift */,
+				2381EA1229E5D93D00AF0CBB /* NavigationService.swift */,
+				233249952A221C820056A2D1 /* CalendarService.swift */,
+				233249972A221C8E0056A2D1 /* FirebaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -616,13 +622,14 @@
 			files = (
 				238556B329EF2D650003DD1D /* PostsView.swift in Sources */,
 				23581F652A1C00F900207C8E /* CalendarContent.swift in Sources */,
+				233249982A221C8E0056A2D1 /* FirebaseService.swift in Sources */,
 				238556B529EF2F410003DD1D /* SearchBarWidget.swift in Sources */,
 				234F694929E2F99200A8DECC /* ContentView.swift in Sources */,
 				23BD322A2A1A917800256D6E /* CustomTextFieldView.swift in Sources */,
 				23581F612A1BFDB800207C8E /* Event.swift in Sources */,
 				238556B129EF2D5A0003DD1D /* CalendarView.swift in Sources */,
 				238556A729EF2CEF0003DD1D /* MainMenuView.swift in Sources */,
-				2381EA1329E5D93D00AF0CBB /* GetAroundUVTBackendService.swift in Sources */,
+				2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */,
 				23FA048429E993B000C2E9D4 /* MapView.swift in Sources */,
 				237371032A1D4A8A00F911A1 /* FeedView.swift in Sources */,
 				238556AD29EF2D400003DD1D /* SettingsView.swift in Sources */,
@@ -630,6 +637,7 @@
 				237371052A1D4E2D00F911A1 /* SocialNetworkView.swift in Sources */,
 				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,
 				23356C9D29EA22CD00809DEC /* MapsRenderUtils.swift in Sources */,
+				233249962A221C820056A2D1 /* CalendarService.swift in Sources */,
 				23581F632A1BFE2200207C8E /* EventViewModel.swift in Sources */,
 				238556AF29EF2D4E0003DD1D /* FriendsView.swift in Sources */,
 				237371092A1D656700F911A1 /* FeedTileView.swift in Sources */,
@@ -797,6 +805,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GetAroundUVT/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Retrieve timetable calendar data for UVT";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -832,6 +841,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GetAroundUVT/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Retrieve timetable calendar data for UVT";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

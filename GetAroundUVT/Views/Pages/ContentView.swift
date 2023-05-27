@@ -23,7 +23,7 @@ struct ContentView: View {
     }
     
     private func registerSignInState() {
-        let service = GetAroundUVTBackendService.Instance()
+        let service = FirebaseService.Instance()
         service.addAuthListener { loggedIn in
             print(loggedIn)
             requireLogin = !loggedIn
