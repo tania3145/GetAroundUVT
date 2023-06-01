@@ -29,7 +29,7 @@
 		2385569B29EF27ED0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
 		2385569C29EF27ED0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
 		238556A729EF2CEF0003DD1D /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556A629EF2CEF0003DD1D /* MainMenuView.swift */; };
-		238556AD29EF2D400003DD1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AC29EF2D400003DD1D /* SettingsView.swift */; };
+		238556AD29EF2D400003DD1D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AC29EF2D400003DD1D /* AccountView.swift */; };
 		238556AF29EF2D4E0003DD1D /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556AE29EF2D4E0003DD1D /* FriendsView.swift */; };
 		238556B129EF2D5A0003DD1D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B029EF2D5A0003DD1D /* CalendarView.swift */; };
 		238556B329EF2D650003DD1D /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B229EF2D650003DD1D /* PostsView.swift */; };
@@ -86,7 +86,7 @@
 		2381EA1229E5D93D00AF0CBB /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		2385569929EF278D0003DD1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		238556A629EF2CEF0003DD1D /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
-		238556AC29EF2D400003DD1D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		238556AC29EF2D400003DD1D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		238556AE29EF2D4E0003DD1D /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		238556B029EF2D5A0003DD1D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		238556B229EF2D650003DD1D /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 				234F694829E2F99200A8DECC /* ContentView.swift */,
 				238556A629EF2CEF0003DD1D /* MainMenuView.swift */,
 				23BD32272A1A3AB600256D6E /* LoginSignupView.swift */,
-				238556AC29EF2D400003DD1D /* SettingsView.swift */,
+				238556AC29EF2D400003DD1D /* AccountView.swift */,
 				238556AE29EF2D4E0003DD1D /* FriendsView.swift */,
 			);
 			path = Pages;
@@ -632,7 +632,7 @@
 				2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */,
 				23FA048429E993B000C2E9D4 /* MapView.swift in Sources */,
 				237371032A1D4A8A00F911A1 /* FeedView.swift in Sources */,
-				238556AD29EF2D400003DD1D /* SettingsView.swift in Sources */,
+				238556AD29EF2D400003DD1D /* AccountView.swift in Sources */,
 				23BD32282A1A3AB600256D6E /* LoginSignupView.swift in Sources */,
 				237371052A1D4E2D00F911A1 /* SocialNetworkView.swift in Sources */,
 				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,

@@ -18,10 +18,10 @@ struct MainMenuView: View {
                     Label("Calendar", systemImage: "calendar")
                 }
                 .tag(1)
-            PostsView()
-//                .edgesIgnoringSafeArea(.top)
+            FriendsView()
+                .edgesIgnoringSafeArea(.top)
                 .tabItem {
-                    Label("Posts", systemImage: "graduationcap")
+                    Label("Friends", systemImage: "person.3")
                 }
                 .tag(2)
             MapView()
@@ -30,16 +30,17 @@ struct MainMenuView: View {
                     Label("Home", systemImage: "house")
                 }
                 .tag(3)
-            FriendsView()
+
+            PostsView()
                 .edgesIgnoringSafeArea(.top)
                 .tabItem {
-                    Label("Friends", systemImage: "person.3")
+                    Label("Posts", systemImage: "graduationcap")
                 }
                 .tag(4)
-            SettingsView()
+            AccountView()
                 .edgesIgnoringSafeArea(.top)
                 .tabItem {
-                    Label("Settings", systemImage: "gearshape")
+                    Label("My Account", systemImage: "person")
                 }
                 .tag(5)
         }

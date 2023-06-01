@@ -91,6 +91,41 @@ class RoomToPolygonCollection {
     }
 }
 
+//class RoomMarker: GMSMarker {
+//    init(labelText: String) {
+//        super.init()
+//
+//        let iconView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 50)))
+//        iconView.backgroundColor = .white
+//        var label = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: iconView.bounds.width, height: iconView.bounds.height)))
+//        label.text = labelText
+//        iconView.addSubview(label)
+//
+//        self.iconView = iconView
+//    }
+//}
+
+
+extension String {
+    
+    /// Generates a `UIImage` instance from this string using a specified
+    /// attributes and size.
+    ///
+    /// - Parameters:
+    ///     - attributes: to draw this string with. Default is `nil`.
+    ///     - size: of the image to return.
+    /// - Returns: a `UIImage` instance from this string using a specified
+    /// attributes and size, or `nil` if the operation fails.
+    func image(withAttributes attributes: [NSAttributedString.Key: Any]? = nil, size: CGSize? = nil) -> UIImage? {
+        let size = size ?? (self as NSString).size(withAttributes: attributes)
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            (self as NSString).draw(in: CGRect(origin: .zero, size: size),
+                                    withAttributes: attributes)
+        }
+    }
+    
+}
+
 class MapRenderer {
     public var currentDrawnPath: GMSPolyline?
     public var currentHighlightedRoom: GMSPolygon?
@@ -103,16 +138,74 @@ class MapRenderer {
     }
     
     public func renderBuilding(_ building: Building) {
+        renderFloor(building.floor)
+//        let iconGenerator = GMUDefaultClusterIconGenerator()
+//        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+//        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
+//        let clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm, renderer: renderer)
         for room in building.rooms {
-            renderRoom(room)
+            if room.isToilet() {
+                renderToilet(room)
+            } else {
+                renderRoom(room)
+            }
         }
+//        clusterManager.cluster()
+    }
+    
+    public func renderFloor(_ floor: Room) {
+        let polygon = mapView.renderPolygon(points: floor.coordinates, fillColor: .blue.withAlphaComponent(0.5), strokeWeight: 1)
+        polygon.isTappable = false
+    }
+    
+    public func renderToilet(_ room: Room) {
+        let polygon = mapView.renderPolygon(points: room.coordinates, fillColor: .white.withAlphaComponent(0), strokeWeight: 1)
+        polygon.isTappable = true
+        
+        let southWest = CLLocationCoordinate2D(latitude: room.center.latitude - 0.0000545, longitude: room.center.longitude - 0.000015)
+        let northEast = CLLocationCoordinate2D(latitude: room.center.latitude + 0.0000255, longitude: room.center.longitude + 0.000145)
+        
+        let bounds = GMSCoordinateBounds(coordinate: southWest, coordinate: northEast)
+        
+        let icon = "Toilet".image(withAttributes: [
+            .font: UIFont.systemFont(ofSize: 11.0)
+        ], size: CGSize(width: 100.0, height: 50.0))
+        
+        let overlay = GMSGroundOverlay(bounds: bounds, icon: icon)
+        overlay.bearing = -13
+        overlay.anchor = CGPoint(x: 0.5, y: 0.5)
+        overlay.map = mapView
+        
+//        let marker = GMSMarker(position: room.center)
+//        let toiletImage = UIImage(named: "toilet")?.withRenderingMode(.alwaysTemplate)
+//        let markerView = UIImageView(image: toiletImage)
+//        marker.title = "Toilet"
+//        marker.iconView = markerView
+//        marker.isTappable = false
+////        marker.tracksViewChanges = true
+//        marker.map = mapView
+        
+        roomPolygons.addRoomPolygon(room, polygon)
     }
     
     public func renderRoom(_ room: Room) {
         let polygon = mapView.renderPolygon(points: room.coordinates, fillColor: .white.withAlphaComponent(0), strokeWeight: 1)
         polygon.isTappable = true
-        let marker = mapView.renderMarker(title: room.name, position: room.center)
-        marker.isTappable = true
+        
+        let southWest = CLLocationCoordinate2D(latitude: room.center.latitude - 0.0000545, longitude: room.center.longitude - 0.000015)
+        let northEast = CLLocationCoordinate2D(latitude: room.center.latitude + 0.0000255, longitude: room.center.longitude + 0.000145)
+        
+        let bounds = GMSCoordinateBounds(coordinate: southWest, coordinate: northEast)
+        
+        let icon = room.name.image(withAttributes: [
+            .font: UIFont.systemFont(ofSize: 11.0)
+        ], size: CGSize(width: 100.0, height: 50.0))
+        
+        let overlay = GMSGroundOverlay(bounds: bounds, icon: icon)
+        overlay.bearing = -13
+        overlay.anchor = CGPoint(x: 0.5, y: 0.5)
+        overlay.map = mapView
+        
         roomPolygons.addRoomPolygon(room, polygon)
     }
     

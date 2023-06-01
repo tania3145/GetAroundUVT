@@ -35,18 +35,27 @@ struct Room {
             return CLLocationCoordinate2D(latitude: center.latitude / Double(coordinates.count), longitude: center.longitude / Double(coordinates.count))
         }
     }
+    
+    public func isToilet() -> Bool {
+        return name.lowercased().contains("toilet")
+    }
 }
 
 struct Building {
     public let rooms: [Room]
+    public let floor: Room
+}
+
+enum MapViewModelError: Error {
+    case floorExtractError(String)
 }
 
 class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
     @Published var mapView: GMSMapView = {
         GMSServices.provideAPIKey("AIzaSyBvpb75co2ehXH-qG420MrwPhhZbmqJRVM")
         // [DO NOT DELETE COMMENT BELOW] Enable custom styling
-        // let mapView = GMSMapView(frame: CGRect.null, mapID: GMSMapID(identifier: "6f2428702d0bdd32"), camera: GMSCameraPosition())
-        let mapView = GMSMapView()
+         let mapView = GMSMapView(frame: CGRect.null, mapID: GMSMapID(identifier: "6f2428702d0bdd32"), camera: GMSCameraPosition())
+//        let mapView = GMSMapView()
         return mapView
     }()
     @Published var showAlert: Bool = false
@@ -60,6 +69,22 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
     private let backendService: NavigationService
     private var building: Building?
     
+    private func createBuildingFromRooms(rooms: [Room]) throws -> Building {
+        var floor: Int? = nil
+        for i in 0...rooms.count-1 {
+            if rooms[i].name == "Parter" {
+                floor = i
+                break
+            }
+        }
+        if floor == nil {
+            throw MapViewModelError.floorExtractError("Couldn't extract floor named Parter.")
+        }
+        var roomsCopy = rooms.map({$0})
+        roomsCopy.remove(at: floor!)
+        return Building(rooms: roomsCopy, floor: rooms[floor!])
+    }
+    
     override init() {
         backendService = NavigationService.Instance()
         super.init()
@@ -70,10 +95,10 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
             Task {
                 do {
                     self?.moveCameraTo(MapViewModel.UVT_LOCATION)
-                    _ = try self?.mapRenderer.loadUVTAssets()
+//                    _ = try self?.mapRenderer.loadUVTAssets()
                     
                     if let rooms = try await self?.backendService.getRooms() {
-                        self?.building = Building(rooms: rooms)
+                        self?.building = try self?.createBuildingFromRooms(rooms: rooms)
                     }
                     
                     if let building = self?.building {
