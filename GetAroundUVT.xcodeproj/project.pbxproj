@@ -36,6 +36,7 @@
 		238556B129EF2D5A0003DD1D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B029EF2D5A0003DD1D /* CalendarView.swift */; };
 		238556B329EF2D650003DD1D /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B229EF2D650003DD1D /* PostsView.swift */; };
 		238556B529EF2F410003DD1D /* SearchBarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238556B429EF2F410003DD1D /* SearchBarWidget.swift */; };
+		238C82AD2A350E4500B91802 /* UVTFakeLocation2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 238C82AC2A350E4500B91802 /* UVTFakeLocation2.gpx */; };
 		23BD32282A1A3AB600256D6E /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD32272A1A3AB600256D6E /* LoginSignupView.swift */; };
 		23BD322A2A1A917800256D6E /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD32292A1A917800256D6E /* CustomTextFieldView.swift */; };
 		23E52AC929EAA8DE0018CA6D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E52AC829EAA8DE0018CA6D /* MapViewModel.swift */; };
@@ -95,6 +96,7 @@
 		238556B029EF2D5A0003DD1D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		238556B229EF2D650003DD1D /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		238556B429EF2F410003DD1D /* SearchBarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarWidget.swift; sourceTree = "<group>"; };
+		238C82AC2A350E4500B91802 /* UVTFakeLocation2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UVTFakeLocation2.gpx; sourceTree = "<group>"; };
 		23AF05B129E9CE9B0060BE48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23BD32272A1A3AB600256D6E /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
 		23BD32292A1A917800256D6E /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		23EA05EC29E342AB00C56284 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				238C82AC2A350E4500B91802 /* UVTFakeLocation2.gpx */,
 				23EA05ED29E342C300C56284 /* UVTData.json */,
 				235C218529E8AB8D00AABAD2 /* UVTFakeLocation.gpx */,
 			);
@@ -474,6 +477,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238C82AD2A350E4500B91802 /* UVTFakeLocation2.gpx in Resources */,
 				23EA05EE29E342C300C56284 /* UVTData.json in Resources */,
 				2385569A29EF278D0003DD1D /* GoogleService-Info.plist in Resources */,
 				234F694E29E2F99300A8DECC /* Preview Assets.xcassets in Resources */,

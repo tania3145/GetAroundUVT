@@ -146,6 +146,13 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         return path
     }
     
+    public func computePathAndRenderTo(end: CLLocationCoordinate2D) async throws {
+        guard let myLocation = await mapView.myLocation else { return }
+        let path = try await computePath(start: myLocation.coordinate, end: end)
+        mapRenderer.highlightRoom(nil)
+        mapRenderer.renderPath(path)
+    }
+    
     public func moveCameraToMyLocation() {
         moveCameraTo(mapView.myLocation?.coordinate ?? MapViewModel.UVT_LOCATION)
     }
@@ -162,6 +169,14 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         } else {
             mapView.camera = camera
         }
+    }
+    
+    func updateUserLocation() async throws {
+        let service = FirebaseService.Instance()
+        guard let coo = await mapView.myLocation?.coordinate else {
+            return
+        }
+        try await service.updateCurrentUserLocation(location: Location(lat: Double(coo.latitude), long: Double(coo.longitude)))
     }
     
     public func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {

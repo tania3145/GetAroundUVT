@@ -28,6 +28,7 @@ struct MapViewWrapper: UIViewRepresentable {
 struct MapView: View {
     @StateObject var mapViewModel: MapViewModel
     @FocusState private var focusedField: String?
+    let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -97,6 +98,17 @@ struct MapView: View {
                 Spacer()
                 Button("Done") {
                     focusedField = nil
+                }
+            }
+        }.onReceive(timer) { time in
+            DispatchQueue.main.async {
+                Task {
+                    do {
+                        try await mapViewModel.updateUserLocation()
+                    } catch {
+                        mapViewModel.showAlert = true
+                        mapViewModel.alertMessage = "\(error)"
+                    }
                 }
             }
         }

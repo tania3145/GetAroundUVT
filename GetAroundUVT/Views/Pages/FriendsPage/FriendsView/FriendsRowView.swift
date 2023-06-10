@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import GoogleMaps
 
 struct FriendsRowView: View {
     @Binding var tabSelection: Int
@@ -69,9 +70,18 @@ struct FriendsRowView: View {
                             }
                             
                         }
-                    } else {
+                    } else if personItem.location != nil {
                         Button(action: {
-                            
+                            DispatchQueue.main.async {
+                                Task {
+                                    do {
+                                        try await getDirections(location: personItem.location!)
+                                    } catch {
+                                        showAlert = true
+                                        alertMessage = "\(error)"
+                                    }
+                                }
+                            }
                         }) {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 5)
@@ -98,8 +108,9 @@ struct FriendsRowView: View {
         }
     }
     
-    func getDirections() {
-        
+    func getDirections(location: CLLocationCoordinate2D) async throws {
+        tabSelection = 3
+        _ = try await mapViewModel.computePathAndRenderTo(end: location)
     }
     
     func addFriend() async throws {

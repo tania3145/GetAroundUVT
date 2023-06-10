@@ -83,11 +83,22 @@ struct FirebaseUserProfileImage : View {
     }
 }
 
+class Location {
+    public var lat: Double
+    public var long: Double
+    
+    init(lat: Double, long: Double) {
+        self.lat = lat
+        self.long = long
+    }
+}
+
 class FirebaseUser {
     public var uid: String
     public var name: String?
     public var email: String?
     public var friends: [String] = []
+    public var location: Location?
     
     init(uid: String) {
         self.uid = uid
@@ -150,6 +161,9 @@ class FirebaseService {
                 firebaseUser.email = el.value as? String
             } else if el.key == "friends" {
                 firebaseUser.friends = el.value as? [String] ?? []
+            } else if el.key == "location" {
+                let dic = el.value as! Dictionary<String, Double>
+                firebaseUser.location = Location(lat: dic["lat"]!, long: dic["long"]!)
             }
         }
         return firebaseUser
@@ -229,6 +243,19 @@ class FirebaseService {
         currentUser.friends.append(uid)
         try await db.collection("users").document(user.uid).updateData([
             "friends": currentUser.friends
+        ])
+    }
+    
+    func updateCurrentUserLocation(location: Location) async throws {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        let db = Firestore.firestore()
+        try await db.collection("users").document(user.uid).updateData([
+            "location": [
+                "lat": location.lat,
+                "long": location.long
+            ]
         ])
     }
 }

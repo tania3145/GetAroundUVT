@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMaps
 
 class FriendsViewModel: ObservableObject {
     @Published var currentUser: FirebaseUser!
@@ -37,6 +38,11 @@ class FriendsViewModel: ObservableObject {
         others = []
         allPeople.forEach { user in
             var person = Person(id: user.uid, name: user.name ?? "", email: user.email ?? "")
+            var location: CLLocationCoordinate2D? = nil
+            if user.location != nil {
+                location = CLLocationCoordinate2D(latitude: user.location!.lat, longitude: user.location!.long)
+            }
+            person.location = location
             if currentUser?.friends.contains(person.id) == true {
                 friends.append(person)
             } else {
@@ -173,6 +179,7 @@ struct Person: Identifiable {
     let name: String
 //    let image: URL?
     let email: String
+    var location: CLLocationCoordinate2D?
     
     static var person1: Person {
         return Person(
