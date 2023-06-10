@@ -7,11 +7,23 @@
 
 import SwiftUI
 
-class SearchService: ObservableObject {
-    @Published var building: Building
+class SearchService {
+    private static var instance: SearchService?
     
-    init(building: Building) {
-        self.building = building
+    public static func Instance() -> SearchService {
+        if (instance == nil) {
+            instance = SearchService()
+        }
+        return instance!
+    }
+    
+    private init() {
+    }
+    
+    public func conatinsRoom(searchSpace: String, roomName: String) -> Bool {
+        return searchSpace.lowercased().components(separatedBy: CharacterSet(charactersIn: " ,.{}[]()<>!?")).first { token in
+            token == roomName.lowercased().replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        } != nil
     }
 }
 

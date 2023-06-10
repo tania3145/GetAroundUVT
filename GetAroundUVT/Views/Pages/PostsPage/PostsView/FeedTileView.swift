@@ -113,10 +113,11 @@ struct FeedTileView: View {
     }
     
     func getLocation(item: FeedItem) -> Room? {
+        let searchService = SearchService.Instance()
         return mapViewModel.building?.rooms.first { room in
             var searchSpace = ""
             searchSpace += item.body + " "
-            return searchSpace.lowercased().contains(" \(room.name.lowercased().replacingOccurrences(of: " ", with: "", options: .literal, range: nil)) ")
+            return searchService.conatinsRoom(searchSpace: searchSpace, roomName: room.name)
         }
     }
     

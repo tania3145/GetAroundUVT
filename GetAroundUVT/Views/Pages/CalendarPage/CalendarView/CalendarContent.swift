@@ -184,12 +184,13 @@ struct CalendarContent: View {
     }
     
     func getLocation(event: Event) -> Room? {
+        let searchService = SearchService.Instance()
         return mapViewModel.building?.rooms.first { room in
             var searchSpace = ""
             searchSpace += event.eventTitle + " "
             searchSpace += (event.getParsedEventDescription() ?? "") + " "
             searchSpace += (event.getParsedEventLocation() ?? "") + " "
-            return searchSpace.lowercased().contains(" \(room.name.lowercased().replacingOccurrences(of: " ", with: "", options: .literal, range: nil)) ")
+            return searchService.conatinsRoom(searchSpace: searchSpace, roomName: room.name)
         }
     }
     
