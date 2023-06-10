@@ -32,7 +32,7 @@ struct MainMenuView: View {
                 }
                 .tag(3)
 
-            PostsView()
+            PostsView(tabSelection: $tabSelection, mapViewModel: mapViewModel)
                 .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     Label("Posts", systemImage: "graduationcap")

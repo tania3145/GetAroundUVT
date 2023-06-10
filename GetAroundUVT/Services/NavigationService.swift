@@ -93,7 +93,7 @@ class NavigationService {
         let data: PostsJsonData = try await getJson(NavigationService.NAVIGATION_API_POSTS_METHOD)
         return data.posts.map { post in
             let postUrl = post.full_picture != nil ? URL(string: post.full_picture!) : nil
-            return FeedItem(name: data.user.name, email: "@GetAroundUVT", avatarURL: URL(string: data.user.picture)!, body: post.message, imageURL: postUrl, location: "", directions: false)
+            return FeedItem(name: data.user.name, email: "@GetAroundUVT", avatarURL: URL(string: data.user.picture)!, body: post.message, imageURL: postUrl)
         }
     }
 }

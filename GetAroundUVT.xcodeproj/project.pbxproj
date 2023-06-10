@@ -25,7 +25,6 @@
 		2366E28A2A31E7F90060EC5B /* FriendsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2366E2892A31E7F90060EC5B /* FriendsRowView.swift */; };
 		2367F61E2A1B62200097A65A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2367F61D2A1B62200097A65A /* LaunchScreen.storyboard */; };
 		237371032A1D4A8A00F911A1 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237371022A1D4A8A00F911A1 /* FeedView.swift */; };
-		237371052A1D4E2D00F911A1 /* SocialNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237371042A1D4E2D00F911A1 /* SocialNetworkView.swift */; };
 		237371092A1D656700F911A1 /* FeedTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237371082A1D656700F911A1 /* FeedTileView.swift */; };
 		2381EA1329E5D93D00AF0CBB /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EA1229E5D93D00AF0CBB /* NavigationService.swift */; };
 		2385569A29EF278D0003DD1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2385569929EF278D0003DD1D /* GoogleService-Info.plist */; };
@@ -87,7 +86,6 @@
 		2366E2892A31E7F90060EC5B /* FriendsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRowView.swift; sourceTree = "<group>"; };
 		2367F61D2A1B62200097A65A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		237371022A1D4A8A00F911A1 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
-		237371042A1D4E2D00F911A1 /* SocialNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNetworkView.swift; sourceTree = "<group>"; };
 		237371082A1D656700F911A1 /* FeedTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTileView.swift; sourceTree = "<group>"; };
 		2381EA1229E5D93D00AF0CBB /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		2385569929EF278D0003DD1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				237371022A1D4A8A00F911A1 /* FeedView.swift */,
-				237371042A1D4E2D00F911A1 /* SocialNetworkView.swift */,
 				237371082A1D656700F911A1 /* FeedTileView.swift */,
 			);
 			path = PostsView;
@@ -660,7 +657,6 @@
 				237371032A1D4A8A00F911A1 /* FeedView.swift in Sources */,
 				238556AD29EF2D400003DD1D /* AccountView.swift in Sources */,
 				23BD32282A1A3AB600256D6E /* LoginSignupView.swift in Sources */,
-				237371052A1D4E2D00F911A1 /* SocialNetworkView.swift in Sources */,
 				234F694729E2F99200A8DECC /* GetAroundUVTApp.swift in Sources */,
 				23356C9D29EA22CD00809DEC /* MapsRenderUtils.swift in Sources */,
 				233249962A221C820056A2D1 /* CalendarService.swift in Sources */,

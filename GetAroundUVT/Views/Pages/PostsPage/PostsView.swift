@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct PostsView: View {
+    @Binding var tabSelection: Int
+    @StateObject var mapViewModel: MapViewModel
+    
     var body: some View {
-        FeedView()
+        FeedView(tabSelection: $tabSelection, mapViewModel: mapViewModel)
     }
 }
 
 struct PostsView_Previews: PreviewProvider {
     static var previews: some View {
-        PostsView()
+        PostsView(tabSelection: .constant(4), mapViewModel: MapViewModel())
     }
 }
