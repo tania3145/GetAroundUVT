@@ -129,6 +129,7 @@ extension String {
 class MapRenderer {
     public var currentDrawnPath: GMSPolyline?
     public var currentHighlightedRoom: GMSPolygon?
+    public var currentFriendLocationMarker: GMSMarker?
     public var roomPolygons: RoomToPolygonCollection = RoomToPolygonCollection()
     
     private var mapView: GMSMapView
@@ -225,6 +226,16 @@ class MapRenderer {
         currentHighlightedRoom?.fillColor = .purple.withAlphaComponent(0.3)
     }
     
+    public func renderFriend(_ friend: Person) {
+        guard let location = friend.location else {
+            return
+        }
+        currentFriendLocationMarker?.map = nil
+        currentFriendLocationMarker = GMSMarker(position: location)
+        currentFriendLocationMarker?.title = friend.name
+        currentFriendLocationMarker?.map = mapView
+    }
+    
     public func loadUVTAssets() throws -> GMUGeometryRenderer {
         guard let path = Bundle.main.path(forResource: "UVTData", ofType: "json") else {
             throw MapsRenderUtilsErrors.uvtAssetsFailedToLoad
@@ -241,6 +252,12 @@ class MapRenderer {
             o.isTappable = false
         }
         return renderer
+    }
+    
+    public func clearMap() {
+        highlightRoom(nil)
+        renderPath(Path(points: []))
+        currentFriendLocationMarker?.map = nil
     }
     
     public func overlayToRoom(_ overlay: GMSOverlay) -> Room? {

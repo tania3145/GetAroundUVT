@@ -75,7 +75,7 @@ struct FriendsRowView: View {
                             DispatchQueue.main.async {
                                 Task {
                                     do {
-                                        try await getDirections(location: personItem.location!)
+                                        try await getDirections()
                                     } catch {
                                         showAlert = true
                                         alertMessage = "\(error)"
@@ -108,9 +108,9 @@ struct FriendsRowView: View {
         }
     }
     
-    func getDirections(location: CLLocationCoordinate2D) async throws {
+    func getDirections() async throws {
         tabSelection = 3
-        _ = try await mapViewModel.computePathAndRenderTo(end: location)
+        _ = try await mapViewModel.goToFriend(friend: personItem)
     }
     
     func addFriend() async throws {

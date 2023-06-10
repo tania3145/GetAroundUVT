@@ -124,6 +124,7 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
     public func selectRoom(room: Room) {
 //        query = room.name
         guard let myLocation = mapView.myLocation else { return }
+        mapRenderer.clearMap()
         DispatchQueue.main.async { [weak self] in
             Task {
                 do {
@@ -146,10 +147,12 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         return path
     }
     
-    public func computePathAndRenderTo(end: CLLocationCoordinate2D) async throws {
+    public func goToFriend(friend: Person) async throws {
         guard let myLocation = await mapView.myLocation else { return }
+        guard let end = friend.location else { return }
         let path = try await computePath(start: myLocation.coordinate, end: end)
-        mapRenderer.highlightRoom(nil)
+        mapRenderer.clearMap()
+        mapRenderer.renderFriend(friend)
         mapRenderer.renderPath(path)
     }
     
@@ -185,7 +188,6 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
     }
 
     public func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        mapRenderer.highlightRoom(nil)
-        mapRenderer.renderPath(Path(points: []))
+        mapRenderer.clearMap()
     }
 }
