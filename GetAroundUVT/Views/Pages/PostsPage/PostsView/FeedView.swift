@@ -32,10 +32,11 @@ struct FeedView: View {
             .hLeading()
             
             Button {
-                // tabSelection = 5
+                 tabSelection = 5
             } label: {
-                Image("Profile")
-                    .resizable()
+//                Image("Profile")
+                FirebaseUserProfileImage()
+//                    .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 45, height: 45)
                     .clipShape(Circle())

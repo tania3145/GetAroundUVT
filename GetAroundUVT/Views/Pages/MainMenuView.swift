@@ -19,7 +19,7 @@ struct MainMenuView: View {
                     Label("Calendar", systemImage: "calendar")
                 }
                 .tag(1)
-            FriendsView()
+            FriendsView(tabSelection: $tabSelection, mapViewModel: mapViewModel)
                 .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     Label("People", systemImage: "person.3")

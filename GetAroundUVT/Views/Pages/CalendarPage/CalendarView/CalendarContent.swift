@@ -202,27 +202,30 @@ struct CalendarContent: View {
     // MARK: Header
     func HeaderView()->some View {
         
-        HStack(spacing: 10) {
-            
-            VStack(alignment: .leading, spacing: 10) {
+        VStack() {
+            HStack(spacing: 10) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Calendar")
+                        .font(.largeTitle.bold())
+                    //                    .foregroundColor(.white)
+                        .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
+                }
+                .hLeading()
+                
+                Button {
+                    tabSelection = 5
+                } label: {
+                    FirebaseUserProfileImage()
+//                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 45, height: 45)
+                        .clipShape(Circle())
+                }
+            }
+            HStack(spacing: 10) {
                 Text("Today - \(Date().formatted(date: .abbreviated, time: .omitted))")
                     .foregroundColor(.gray)
-                
-                Text("Calendar")
-                    .font(.largeTitle.bold())
-//                    .foregroundColor(.white)
-                    .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
-            }
-            .hLeading()
-            
-            Button {
-                tabSelection = 5
-            } label: {
-                Image("Profile")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 45, height: 45)
-                    .clipShape(Circle())
+                Spacer()
             }
         }
         .padding()

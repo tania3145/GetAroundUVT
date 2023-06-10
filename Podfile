@@ -10,6 +10,7 @@ target 'GetAroundUVT' do
   pod 'Google-Maps-iOS-Utils', '~> 4.1.0'
   pod 'FirebaseAuth', '~> 9.6.0'
   pod 'FirebaseFirestore', '~> 9.6.0'
+  pod 'FirebaseStorage', '~> 9.6.0'
   pod 'SwiftSoup'
   
   target 'GetAroundUVTTests' do

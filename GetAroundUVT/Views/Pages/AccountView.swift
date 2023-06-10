@@ -9,19 +9,21 @@ import SwiftUI
 
 struct AccountView: View {
     @State var showAlert: Bool = false
-    @State var errorMessage: String = ""
+    @State var alertTitle: String = "Exception occurred"
+    @State var alertMessage: String = ""
+    @State var user: FirebaseUser? = nil
     
     var body: some View {
         ZStack{
 //            Color(red: 0.115, green: 0.287, blue: 0.448).edgesIgnoringSafeArea(.all)
             VStack {
-                VStack(){
-                    Image("Profile")
-                        .resizable()
+                VStack() {
+                    FirebaseUserProfileImage()
+//                        .resizable()
                         .frame(width: 120, height: 120)
                         .clipShape(Circle())
                     
-                    Text("Curuțchi Tania-Maria")
+                    Text(user?.name ?? "Name")
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448))
@@ -32,16 +34,16 @@ struct AccountView: View {
                     HStack{
                         Image(systemName: "envelope")
                             .foregroundColor(Color(red: 0.859, green: 0.678, blue: 0.273))
-                        Text("tania.curutchi01@e-uvt.ro")
+                        Text(user?.email ?? "Email")
                             .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448))
                     }
                     
-                    HStack{
-                        Image(systemName: "phone")
-                            .foregroundColor(Color(red: 0.859, green: 0.678, blue: 0.273))
-                        Text("0758385179")
-                            .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448))
-                    }
+//                    HStack{
+//                        Image(systemName: "phone")
+//                            .foregroundColor(Color(red: 0.859, green: 0.678, blue: 0.273))
+//                        Text("0758385179")
+//                            .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448))
+//                    }
                     
                     // add more fileds here
                 }
@@ -59,12 +61,25 @@ struct AccountView: View {
                         .cornerRadius(12)
                 }
             }
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text("Exception occurred"),
-                    message: Text(errorMessage),
-                    dismissButton: .default(Text("OK"))
-                )
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text(alertTitle),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        .onAppear() {
+            let service = FirebaseService.Instance()
+            DispatchQueue.main.async {
+                Task {
+                    do {
+                        user = try await service.getCurrentUserData()
+                    } catch {
+                        showAlert = true
+                        alertMessage = "\(error)"
+                    }
+                }
             }
         }
     }
@@ -75,7 +90,7 @@ struct AccountView: View {
             try service.signOut()
         } catch {
             showAlert = true
-            errorMessage = error.localizedDescription
+            alertMessage = error.localizedDescription
         }
     }
 }

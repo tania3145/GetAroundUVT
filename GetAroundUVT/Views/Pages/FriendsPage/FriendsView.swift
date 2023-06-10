@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct FriendsView: View {
+    @Binding var tabSelection: Int
+    @StateObject var mapViewModel: MapViewModel
+    
     var body: some View {
-        FriendsContentView(person: [.person1, .person2, .person3, .person4, .person5, .person6, .person7, .person8])
+        FriendsContentView(tabSelection: $tabSelection, mapViewModel: mapViewModel, person: [.person1, .person2, .person3, .person4, .person5, .person6, .person7, .person8])
     }
 }
 
 struct FriendsView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsView()
+        FriendsView(tabSelection: .constant(1), mapViewModel: MapViewModel())
     }
 }
 

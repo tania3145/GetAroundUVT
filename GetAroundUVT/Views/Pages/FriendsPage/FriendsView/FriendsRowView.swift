@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct FriendsRowView: View {
+    @Binding var tabSelection: Int
+    @StateObject var mapViewModel: MapViewModel
     var personItem: Person
 
     var body: some View{
@@ -72,7 +74,7 @@ struct FriendsRowView: View {
 
 struct FriendsRowView_Preview: PreviewProvider {
     static var previews: some View {
-        FriendsContentView(person: [.person1, .person2])
+        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel(), person: [.person1, .person2])
     }
 }
 

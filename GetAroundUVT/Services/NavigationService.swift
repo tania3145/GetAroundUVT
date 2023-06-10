@@ -37,6 +37,10 @@ struct PostsJsonData: Codable {
     public let posts: Array<PostJsonData>
 }
 
+enum NavigationServiceError: Error {
+    case httpError(String)
+}
+
 class NavigationService {
     private static let NAVIGATION_API_BASE_URL = URL(string: "https://adc6-2a02-2f01-4100-1b00-6ce3-a19b-838c-81e8.ngrok-free.app")!;
     private static let NAVIGATION_API_PATH_METHOD = "/path";
@@ -60,7 +64,12 @@ class NavigationService {
             .appendingPathComponent(path)
             .appending(queryItems: queryItems)
         let urlRequest = URLRequest(url: baseUrl)
-        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let (data, res) = try await URLSession.shared.data(for: urlRequest)
+        if let res = res as? HTTPURLResponse {
+            if !(200...299).contains(res.statusCode) {
+                throw NavigationServiceError.httpError("Http error occurred.")
+            }
+        }
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     }

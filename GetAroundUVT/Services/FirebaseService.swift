@@ -6,8 +6,76 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
+
+final class Loader : ObservableObject {
+    @Published var data: Data? = nil
+
+    init(_ id: String){
+        // the path to the image
+        let url = "\(id)"
+        let storage = Storage.storage()
+        let ref = storage.reference().child(url)
+        ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("\(error)")
+            }
+
+            DispatchQueue.main.async {
+                self.data = data
+            }
+        }
+    }
+}
+
+struct FirebaseImage : View {
+    let placeholder = UIImage(named: "DefaultProfilePicture")!
+
+    init(id: String) {
+        self.imageLoader = Loader(id)
+    }
+
+    @ObservedObject private var imageLoader : Loader
+
+    var image: UIImage? {
+        imageLoader.data.flatMap(UIImage.init)
+    }
+
+    var body: some View {
+        Image(uiImage: image ?? placeholder)
+            .resizable()
+    }
+}
+
+struct FirebaseUserProfileImage : View {
+    private var id: String
+    
+    init() {
+        guard let user = Auth.auth().currentUser else {
+            id = ""
+            return
+        }
+        id = "\(user.uid)_profile_pic.png"
+    }
+    
+    var body: some View {
+        FirebaseImage(id: id)
+    }
+}
+
+class FirebaseUser {
+    public var uid: String
+    public var name: String?
+    public var email: String?
+    
+    init(uid: String) {
+        self.uid = uid
+    }
+}
 
 class FirebaseService {
     private static var instance: FirebaseService?
@@ -39,5 +107,26 @@ class FirebaseService {
         Auth.auth().addStateDidChangeListener { auth, user in
             lambda(user != nil)
         }
+    }
+    
+    func getCurrentUserData() async throws -> FirebaseUser? {
+        guard let user = Auth.auth().currentUser else {
+            return nil
+        }
+        
+        let db = Firestore.firestore()
+        guard let userData = try await db.collection("users").document(user.uid).getDocument().data() else {
+            return nil
+        }
+        
+        let firebaseUser = FirebaseUser(uid: user.uid)
+        userData.forEach { el in
+            if el.key == "name" {
+                firebaseUser.name = el.value as? String
+            } else if el.key == "email" {
+                firebaseUser.email = el.value as? String
+            }
+        }
+        return firebaseUser
     }
 }

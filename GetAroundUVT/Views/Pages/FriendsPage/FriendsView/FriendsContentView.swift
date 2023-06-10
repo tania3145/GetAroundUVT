@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FriendsContentView: View {
+    @Binding var tabSelection: Int
+    @StateObject var mapViewModel: MapViewModel
     @State var showAlert: Bool = false
     @State var alertTitle: String = "Exception occurred"
     @State var alertMessage: String = ""
@@ -23,7 +25,7 @@ struct FriendsContentView: View {
                         ScrollView{
                             LazyVStack{
                                 ForEach(person) { item in
-                                    FriendsRowView(personItem: item)
+                                    FriendsRowView(tabSelection: $tabSelection, mapViewModel: mapViewModel, personItem: item)
                                         .padding()
                                     Divider()
                                 }
@@ -105,10 +107,10 @@ struct FriendsContentView: View {
             .hLeading()
             
             Button {
-                // tabSelection = 5
+                 tabSelection = 5
             } label: {
-                Image("Profile")
-                    .resizable()
+                FirebaseUserProfileImage()
+//                    .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 45, height: 45)
                     .clipShape(Circle())
@@ -213,6 +215,6 @@ struct Person: Identifiable {
 
 struct FriendsContentView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsContentView(person: [.person1, .person2, .person3, .person4, .person5, .person6, .person7, .person8])
+        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel(), person: [.person1, .person2, .person3, .person4, .person5, .person6, .person7, .person8])
     }
 }
