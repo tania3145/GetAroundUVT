@@ -19,6 +19,12 @@ class FriendsViewModel: ObservableObject {
         try await updatePeople()
     }
     
+    func isFriend(person: Person) -> Bool {
+        return friends.contains { p in
+            person.id == p.id
+        }
+    }
+    
     @MainActor
     func updatePeople() async throws {
         let service = FirebaseService.Instance()
@@ -27,18 +33,15 @@ class FriendsViewModel: ObservableObject {
         allPeople = allPeople.filter { user in
             user.uid != currentUser?.uid
         }
-        let persons = allPeople.map { user in
+        friends = []
+        others = []
+        allPeople.forEach { user in
             var person = Person(id: user.uid, name: user.name ?? "", email: user.email ?? "")
             if currentUser?.friends.contains(person.id) == true {
-                person.isFriend = true
+                friends.append(person)
+            } else {
+                others.append(person)
             }
-            return person
-        }
-        friends = persons.filter { person in
-            person.isFriend
-        }
-        others = persons.filter { person in
-            !person.isFriend
         }
     }
 }
@@ -170,7 +173,6 @@ struct Person: Identifiable {
     let name: String
 //    let image: URL?
     let email: String
-    var isFriend: Bool = false
     
     static var person1: Person {
         return Person(

@@ -46,7 +46,7 @@ struct FriendsRowView: View {
                 
                 
                 HStack{
-                    if !personItem.isFriend {
+                    if !friendsViewModel.isFriend(person: personItem) {
                         Button(action: {
                             DispatchQueue.main.async {
                                 Task {
@@ -69,9 +69,7 @@ struct FriendsRowView: View {
                             }
                             
                         }
-                    }
-                    
-                    if personItem.isFriend {
+                    } else {
                         Button(action: {
                             
                         }) {
