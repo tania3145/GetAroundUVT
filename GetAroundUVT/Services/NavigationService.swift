@@ -20,10 +20,28 @@ struct RoomJsonData: Codable {
     public let coordinates: [[Double]]
 }
 
+struct UserJsonData: Codable {
+    public let id: String
+    public let name: String
+    public let picture: String
+}
+
+struct PostJsonData: Codable {
+    public let id: String
+    public let message: String
+    public let full_picture: String?
+}
+
+struct PostsJsonData: Codable {
+    public let user: UserJsonData
+    public let posts: Array<PostJsonData>
+}
+
 class NavigationService {
     private static let NAVIGATION_API_BASE_URL = URL(string: "https://adc6-2a02-2f01-4100-1b00-6ce3-a19b-838c-81e8.ngrok-free.app")!;
     private static let NAVIGATION_API_PATH_METHOD = "/path";
     private static let NAVIGATION_API_POI_METHOD = "/poi";
+    private static let NAVIGATION_API_POSTS_METHOD = "/posts";
     
     private static var instance: NavigationService?
     
@@ -69,5 +87,13 @@ class NavigationService {
         return Path(points: data.map { point in
             return Point(coordinates: CLLocationCoordinate2D(latitude: point[0], longitude: point[1]), level: Int(point[2]))
         })
+    }
+    
+    func getPosts() async throws -> [FeedItem] {
+        let data: PostsJsonData = try await getJson(NavigationService.NAVIGATION_API_POSTS_METHOD)
+        return data.posts.map { post in
+            let postUrl = post.full_picture != nil ? URL(string: post.full_picture!) : nil
+            return FeedItem(name: data.user.name, email: "@GetAroundUVT", avatarURL: URL(string: data.user.picture)!, body: post.message, imageURL: postUrl, location: "", directions: false)
+        }
     }
 }

@@ -56,7 +56,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4CAD3C10-FA80-4AA9-BD93-24CC8BCD8613"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GetAroundUVT/Services/NavigationService.swift"
@@ -162,6 +162,100 @@
             endingLineNumber = "119"
             landmarkName = "isSameDayAsActualToday()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0712AFD-C288-4F87-A0A1-DC5C43C3D89E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAroundUVT/Services/NavigationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "getJson(_:queryItems:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E5776A8-016F-443D-8A79-E8E666A28DEA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAroundUVT/Services/NavigationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getPosts()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5E5776A8-016F-443D-8A79-E8E666A28DEA - 3c3638ea221938a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GetAroundUVT.NavigationService.getPosts() async throws -&gt; Swift.Array&lt;GetAroundUVT.FeedItem&gt;"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Services/NavigationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "5E5776A8-016F-443D-8A79-E8E666A28DEA - a856be212ecd1789"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for GetAroundUVT.NavigationService.getPosts() async throws -&gt; Swift.Array&lt;GetAroundUVT.FeedItem&gt;"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Services/NavigationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "5E5776A8-016F-443D-8A79-E8E666A28DEA - 895f7a03278fbc85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for GetAroundUVT.NavigationService.getPosts() async throws -&gt; Swift.Array&lt;GetAroundUVT.FeedItem&gt;"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Services/NavigationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "5E5776A8-016F-443D-8A79-E8E666A28DEA - 20f3dd70a544f2f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for GetAroundUVT.NavigationService.getPosts() async throws -&gt; Swift.Array&lt;GetAroundUVT.FeedItem&gt;"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Services/NavigationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

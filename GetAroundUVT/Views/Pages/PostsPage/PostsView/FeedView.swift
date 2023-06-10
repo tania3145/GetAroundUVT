@@ -8,39 +8,138 @@
 import SwiftUI
 
 struct FeedView: View {
+    @State var feed: [FeedItem] = []
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Exception occurred"
+    @State var alertMessage: String = ""
     
-    var feed: [FeedItem]
+    // MARK: Header
+    func HeaderView()->some View {
+        
+        HStack(spacing: 10) {
+            
+            VStack(alignment: .leading, spacing: 10) {
+//                Text("Today - \(Date().formatted(date: .abbreviated, time: .omitted))")
+//                    .foregroundColor(.gray)
+                
+                Text("Posts")
+                    .font(.largeTitle.bold())
+//                    .foregroundColor(.white)
+                    .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
+            }
+            .hLeading()
+            
+            Button {
+                // tabSelection = 5
+            } label: {
+                Image("Profile")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 45, height: 45)
+                    .clipShape(Circle())
+            }
+        }
+        .padding()
+        .padding(.top, getSafeArea().top)
+
+        .background(Color.white)
+//        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
+    }
     
     var body: some View {
-        VStack{
-            HStack(spacing: 10) {
-                
-                VStack(alignment: .leading, spacing: 10) {
-
-                    Text("Posts")
-                        .font(.largeTitle.bold())
-                        .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
-                }
-                .hLeading()
-            }
-            .padding()
-            .padding(.top, getSafeArea().top)
-
-            .background(Color.white)
+        ScrollView(.vertical, showsIndicators: false) {
             
-            ScrollView{
-                LazyVStack{
-                    ForEach(feed) { item in
-                        FeedTileView(feedItem: item)
-                            .padding()
+            // MARK: Lazy Stack with Pinned Header
+            LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
+                Section {
+                    VStack {
+                        ScrollView{
+                            LazyVStack{
+                                ForEach(feed) { item in
+                                    FeedTileView(feedItem: item)
+                                        .padding()
+                                }
+                            }
+                        }
+                    }
+                }
+                header: {
+                   HeaderView()
+               }
+            }
+        }
+        .ignoresSafeArea(.container, edges: .top)
+        .onAppear() {
+            let service = NavigationService.Instance()
+            DispatchQueue.main.async {
+                Task {
+                    do {
+                        feed = try await service.getPosts()
+                    } catch {
+                        showAlert = true
+                        alertMessage = "\(error)"
                     }
                 }
             }
         }
-        .ignoresSafeArea(.container, edges: .top)
-
-//        .edgesIgnoringSafeArea(.top)
-//        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text(alertTitle),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+            
+            //        .edgesIgnoringSafeArea(.top)
+            //        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
+        }
+//        VStack {
+//            HStack(spacing: 10) {
+//
+//                VStack(alignment: .leading, spacing: 10) {
+//
+//                    Text("Posts")
+//                        .font(.largeTitle.bold())
+//                        .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
+//                }
+//                .hLeading()
+//            }
+//            .padding()
+//            .padding(.top, getSafeArea().top)
+//            .background(Color.white)
+//
+//            ScrollView{
+//                LazyVStack{
+//                    ForEach(feed) { item in
+//                        FeedTileView(feedItem: item)
+//                            .padding()
+//                    }
+//                }
+//            }
+//        }
+////        .ignoresSafeArea(.container, edges: .top)
+//        .onAppear() {
+//            let service = NavigationService.Instance()
+//            DispatchQueue.main.async {
+//                Task {
+//                    do {
+//                        feed = try await service.getPosts()
+//                    } catch {
+//                        showAlert = true
+//                        alertMessage = "\(error)"
+//                    }
+//                }
+//            }
+//        }
+//        .alert(isPresented: $showAlert) {
+//            Alert(
+//                title: Text(alertTitle),
+//                message: Text(alertMessage),
+//                dismissButton: .default(Text("OK"))
+//            )
+//
+//            //        .edgesIgnoringSafeArea(.top)
+//            //        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
+//        }
     }
 }
 
@@ -51,8 +150,8 @@ struct FeedItem: Identifiable {
     let avatarURL: URL
     let body: String
     let imageURL: URL?
-    let location: String
-    let directions: Bool
+    let location: String?
+    var directions: Bool = false
     
     static var demo1: FeedItem {
         return FeedItem(

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct PostsView: View {
     var body: some View {
-        FeedView(feed: [.demo1, .demo2, .demo3, .demo4])
-//        FeedView()
+        FeedView()
     }
 }
 

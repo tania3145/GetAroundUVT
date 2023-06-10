@@ -49,15 +49,17 @@ struct FeedTileView: View {
             Spacer()
             Spacer()
             
-            if(feedItem.directions) {
+            if feedItem.directions {
                 HStack{
 
                     Text("Location:")
                         .foregroundColor(.white)
                         .font(.title3.bold())
 
-                    Text(feedItem.location)
-                        .foregroundColor(.white)
+                    if feedItem.location != nil {
+                        Text(feedItem.location!)
+                            .foregroundColor(.white)
+                    }
 
                     Spacer()
                 }
