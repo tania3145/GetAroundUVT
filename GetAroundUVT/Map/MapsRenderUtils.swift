@@ -216,8 +216,11 @@ class MapRenderer {
         }, strokeColor: .green)
     }
     
-    public func highlightRoom(_ room: Room) {
+    public func highlightRoom(_ room: Room?) {
         currentHighlightedRoom?.fillColor = .white.withAlphaComponent(0)
+        guard let room = room else {
+            return
+        }
         currentHighlightedRoom = roomPolygons.getPolygon(room)
         currentHighlightedRoom?.fillColor = .purple.withAlphaComponent(0.3)
     }

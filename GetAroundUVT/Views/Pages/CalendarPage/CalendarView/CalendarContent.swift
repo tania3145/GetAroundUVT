@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CalendarContent: View {
+    @Binding var tabSelection: Int
+    @StateObject var mapViewModel: MapViewModel
     @ObservedObject var eventModel: EventViewModel
     @Namespace var animation
     
@@ -138,7 +140,8 @@ struct CalendarContent: View {
                         }
                         //                            .font(.callout)
                         //                            .foregroundColor(.secondary)
-                        
+                        Text(event.getParsedEventLocation() ?? "")
+                            .font(.title2.bold())
                     }
                     .hLeading()
                     if (event.isAllDay) {
@@ -147,27 +150,24 @@ struct CalendarContent: View {
                         Text(event.eventDate.formatted(date: .omitted, time: .shortened))
                     }
                 }
-                if event.eventLocation != nil {
+                let location = getLocation(event: event)
+                if location != nil {
                     // MARK: Location
                     HStack(spacing: 0){
-                        VStack(){
+                        VStack() {
                             HStack {
-                                Text("Location")
-                                Spacer()
                                 // MARK: Get Directions Button
                                 Button(action: {
-                                    
+                                    getLocationPressed(location: location!)
                                 }) {
-                                    Text("Get Directions")
+                                    Text("Directions to Room " + location!.name)
                                         .foregroundColor(.white)
                                         .padding(10)
                                         .background(Color(red: 0.859, green: 0.678, blue: 0.273))
                                         .cornerRadius(10)
                                         .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
-                                }
+                                }.frame(maxWidth: .infinity)
                             }
-                            Text(event.getParsedEventLocation() ?? "")
-                                .font(.title2.bold())
                         }
                         .hLeading()
                     }
@@ -183,16 +183,31 @@ struct CalendarContent: View {
         .hLeading()
     }
     
+    func getLocation(event: Event) -> Room? {
+        return mapViewModel.building?.rooms.first { room in
+            var searchSpace = ""
+            searchSpace += event.eventTitle + " "
+            searchSpace += (event.getParsedEventDescription() ?? "") + " "
+            searchSpace += (event.getParsedEventLocation() ?? "") + " "
+            return searchSpace.lowercased().contains(" \(room.name.lowercased().replacingOccurrences(of: " ", with: "", options: .literal, range: nil)) ")
+        }
+    }
+    
+    func getLocationPressed(location: Room) {
+        tabSelection = 3
+        mapViewModel.selectRoom(room: location)
+    }
+    
     // MARK: Header
     func HeaderView()->some View {
         
         HStack(spacing: 10) {
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(Date().formatted(date: .abbreviated, time: .omitted))
+                Text("Today - \(Date().formatted(date: .abbreviated, time: .omitted))")
                     .foregroundColor(.gray)
                 
-                Text("Today")
+                Text("Calendar")
                     .font(.largeTitle.bold())
 //                    .foregroundColor(.white)
                     .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
@@ -200,7 +215,7 @@ struct CalendarContent: View {
             .hLeading()
             
             Button {
-                
+                tabSelection = 5
             } label: {
                 Image("Profile")
                     .resizable()
@@ -221,7 +236,7 @@ struct CalendarContent: View {
 
 struct CalendarContent_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarContent(eventModel: EventViewModel())
+        CalendarContent(tabSelection: .constant(1), mapViewModel: MapViewModel(), eventModel: EventViewModel())
     }
 }
 

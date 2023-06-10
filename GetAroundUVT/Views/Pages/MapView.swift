@@ -26,19 +26,45 @@ struct MapViewWrapper: UIViewRepresentable {
 }
 
 struct MapView: View {
-    @StateObject var mapViewModel = MapViewModel()
-    @State var searchedText = ""
+    @StateObject var mapViewModel: MapViewModel
+    @FocusState private var focusedField: String?
     
     var body: some View {
         ZStack {
             MapViewWrapper(mapViewModel: mapViewModel)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             VStack {
-                SearchBarWidget(text: $searchedText)
-                    .padding(.top, 50)
+                
+                SearchBarWidget(mapViewModel: mapViewModel, focusedField: $focusedField)
+                    .padding(.top, 60)
                     .shadow(color: Color.gray, radius: 10, x: 5, y: 5)
+                // Old Search bar
+//                SearchBarWidget(text: $searchedText)
+//                    .padding(.top, 60)
+//                    .shadow(color: Color.gray, radius: 10, x: 5, y: 5)
+                
                 Spacer()
             }
+//            .onChange(of: searchData.query) { (newData) in
+////                print(newData)
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                    if newData == searchData.query {
+//                        print("search \(newData)")
+//
+//                        if searchData.query != "" {
+//                            // searching Room
+//                            searchData.page = 1
+//                            searchData.find()
+//                        }
+//                        else {
+//                            // removing all searched Data
+//                            searchData.searchedRoom.removeAll()
+//                        }
+//                    }
+//                }
+//            }
+            
+            
             VStack {
                 Spacer()
                 HStack {
@@ -66,13 +92,20 @@ struct MapView: View {
                 message: Text(mapViewModel.alertMessage),
                 dismissButton: .default(Text("OK"))
             )
+        }.toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    focusedField = nil
+                }
+            }
         }
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        return MapView()
+        return MapView(mapViewModel: MapViewModel())
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .ignoresSafeArea()
     }

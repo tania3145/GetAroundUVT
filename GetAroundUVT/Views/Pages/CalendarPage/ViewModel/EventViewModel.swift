@@ -45,6 +45,9 @@ class EventViewModel: ObservableObject {
     // MARK: Current Day
     @Published var currentDay: Date = Date()
     
+    // MARK: Actual Current Day
+    public let actualToday: Date = Date()
+    
     // MARK: Filtering Today Events
     @Published var filteredEvents: [Event]?
     
@@ -107,6 +110,12 @@ class EventViewModel: ObservableObject {
         let calendar = Calendar.current
         
         return calendar.isDate(currentDay, inSameDayAs: date)
+    }
+    
+    func isSameDayAsActualToday() -> Bool {
+        let calendar = Calendar.current
+        
+        return calendar.isDate(currentDay, inSameDayAs: actualToday)
     }
     
     // MARK: Check if the current hour is event hour

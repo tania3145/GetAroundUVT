@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct CalendarView: View {
+    @Binding var tabSelection: Int
+    @StateObject var mapViewModel: MapViewModel
     @StateObject var eventModel: EventViewModel = EventViewModel()
     @State var showAlert: Bool = false
     @State var errorMessage: String = ""
     
     var body: some View {
-        CalendarContent(eventModel: eventModel)
+        CalendarContent(tabSelection: $tabSelection, mapViewModel: mapViewModel, eventModel: eventModel)
             .onAppear {
                 DispatchQueue.main.async {
                     Task {
@@ -43,6 +45,6 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        CalendarView(tabSelection: .constant(1), mapViewModel: MapViewModel())
     }
 }

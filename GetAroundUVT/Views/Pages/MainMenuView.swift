@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct MainMenuView: View {
+    @StateObject var mapViewModel = MapViewModel()
     @State private var tabSelection = 3
     
     var body: some View {
         TabView(selection: $tabSelection) {
-            CalendarView()
+            CalendarView(tabSelection: $tabSelection, mapViewModel: mapViewModel)
                 .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")
@@ -21,10 +22,10 @@ struct MainMenuView: View {
             FriendsView()
                 .edgesIgnoringSafeArea(.top)
                 .tabItem {
-                    Label("Friends", systemImage: "person.3")
+                    Label("People", systemImage: "person.3")
                 }
                 .tag(2)
-            MapView()
+            MapView(mapViewModel: mapViewModel)
                 .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     Label("Home", systemImage: "house")

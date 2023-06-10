@@ -16,26 +16,12 @@ struct FeedView: View {
             HStack(spacing: 10) {
                 
                 VStack(alignment: .leading, spacing: 10) {
-//                    Text(Date().formatted(date: .abbreviated, time: .omitted))
-//                        .foregroundColor(.gray)
-                    
-//                    Text("Announcements")
-//                    Text("GetAroundUVT Posts")
+
                     Text("Posts")
                         .font(.largeTitle.bold())
                         .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
                 }
                 .hLeading()
-                
-                Button {
-                    
-                } label: {
-                    Image("Profile")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 45, height: 45)
-                        .clipShape(Circle())
-                }
             }
             .padding()
             .padding(.top, getSafeArea().top)
@@ -72,9 +58,9 @@ struct FeedItem: Identifiable {
         return FeedItem(
             name: "Universitatea de Vest din Timișoara",
             email: "@UVT",
-            avatarURL: URL(string: "https://scontent.ftsr1-2.fna.fbcdn.net/v/t39.30808-6/332161168_1000877530875022_3115216531097541752_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Zv7iibYK_TQAX_ebsfT&_nc_ht=scontent.ftsr1-2.fna&oh=00_AfC-Yw7bxzYZ1Wqck5-x9e9wBxPfpP-Hl0kggyV__vJu7g&oe=6472AEB4")!,
+            avatarURL: URL(string: "https://scontent.fsbz1-2.fna.fbcdn.net/v/t39.30808-6/332161168_1000877530875022_3115216531097541752_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=mc13VMUzqqkAX9T6-7k&_nc_ht=scontent.fsbz1-2.fna&oh=00_AfBmbt1Gtl0eUmG-PM6t1-d7pc7nTDn4yZq9--qtQp5bdQ&oe=64867534")!,
             body: "✨ Universitatea de Vest din Timișoara aniversează astăzi 79 de ani de la înființare, marcând astfel un moment deosebit în istoria educației românești.",
-            imageURL: URL(string: "https://scontent.ftsr1-2.fna.fbcdn.net/v/t39.30808-6/347243148_763651488736963_6035125559790969760_n.jpg?stp=dst-jpg_p180x540&_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=PV2_T4NmV_UAX--Q8GL&_nc_oc=AQl3EWOWoREyUSiegx5S1JlXtLXw0VX9fqpPKzer0x2_vaZwgQKZD_lWpr6fb5ClYEbQOnumlcCqHbzFqtu-JC36&_nc_ht=scontent.ftsr1-2.fna&oh=00_AfC0OI7yIszVcsetcRIaAMux6Me1TrnLRUKO9fOOuGB9ug&oe=64726BAF"),
+            imageURL: URL(string: "https://www.ziuadevest.ro/wp-content/uploads/2022/06/UVT.jpg"),
             location: "",
             directions: false
         )
@@ -86,7 +72,7 @@ struct FeedItem: Identifiable {
             email: "maria.ionescu@e-uvt.ro",
             avatarURL: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXggOXFdn0mNlS6LsAadJBxrFuXR8M1t9KuA&usqp=CAU")!,
             body: "Dragi studenți, \nSunteți așteptați\n📚 luni, 22 mai, în intervalul\n🕙 orar 10:00-11:00\n📍în amfiteatrul A01\nla atelierul de educație Franco Jobs.\nÎn cadrul acestui eveniment vor participa reprezentanți din diferite companii franco-române care vor prezenta studenților oportunitățile de carieră.",
-            imageURL: URL(string: "https://scontent.ftsr1-2.fna.fbcdn.net/v/t39.30808-6/348230912_261675606314883_4005186417571268372_n.jpg?stp=dst-jpg_p180x540&_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=8OqzU2rTg84AX_Tdwim&_nc_ht=scontent.ftsr1-2.fna&oh=00_AfADZm7CHr2Ggj0iQ61-TK0pgv4v5c_hnkNWDBHbgSfvZw&oe=64729BDE"),
+            imageURL: URL(string: "https://timisplus.ro/wp-content/uploads/2021/10/ioan.t.morar_.uvt_.png"),
             location: "Amfiteatrul A01",
             directions: true
         )
@@ -108,9 +94,9 @@ struct FeedItem: Identifiable {
         return FeedItem(
             name: "Universitatea de Vest din Timișoara",
             email: "@UVT",
-            avatarURL: URL(string: "https://scontent.ftsr1-2.fna.fbcdn.net/v/t39.30808-6/332161168_1000877530875022_3115216531097541752_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Zv7iibYK_TQAX_ebsfT&_nc_ht=scontent.ftsr1-2.fna&oh=00_AfC-Yw7bxzYZ1Wqck5-x9e9wBxPfpP-Hl0kggyV__vJu7g&oe=6472AEB4")!,
+            avatarURL: URL(string: "https://scontent.fsbz1-2.fna.fbcdn.net/v/t39.30808-6/332161168_1000877530875022_3115216531097541752_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=mc13VMUzqqkAX9T6-7k&_nc_ht=scontent.fsbz1-2.fna&oh=00_AfBmbt1Gtl0eUmG-PM6t1-d7pc7nTDn4yZq9--qtQp5bdQ&oe=64867534")!,
             body: "Vă invităm să descoperiți lumea științei datelor alături de persoane specializate în domeniu, pe care le veți descoperi în cadrul conferinței „Women in Data Science” (în limba engleză), în data de 25 mai, joi, de la ora 09:00-14:00.",
-            imageURL: URL(string: "https://scontent.ftsr1-2.fna.fbcdn.net/v/t39.30808-6/348744045_726010759210243_2341737323494028103_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=11bJOmtLbk8AX9_I5BV&_nc_ht=scontent.ftsr1-2.fna&oh=00_AfDqgwc_rCdyG_kj0fToVY1jUmYpzf2Sbf2mn9_84C6TTA&oe=647386C7"),
+            imageURL: URL(string: "https://scontent.fsbz1-1.fna.fbcdn.net/v/t39.30808-6/348744045_726010759210243_2341737323494028103_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=2xgh05QEGnMAX-WV1sw&_nc_ht=scontent.fsbz1-1.fna&oh=00_AfAkVzuwmqsWuGshkCbvG-7pnv_CFstx8WCPG0SJ6xzbog&oe=64874D47"),
             location: "Amfiteatrul A02",
             directions: true
         )

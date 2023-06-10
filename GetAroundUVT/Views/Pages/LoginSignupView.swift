@@ -39,43 +39,45 @@ struct LoginSignupView: View {
                     LoginView(index: self.$index, focusedField: $focusedField)
                 }
                 
-                HStack(spacing: 15){
-                    Rectangle()
-                    .fill(Color("Color 1"))
-                    .frame(height: 2)
-                    
-                    Text("OR")
-                    .foregroundColor(.white)
-                    
-                    Rectangle()
-                    .fill(Color("Color 1"))
-                    .frame(height: 2)
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 50) // because login button is moved 25 in y axis and 25 padding = 50
+//                HStack(spacing: 15){
+//                    Rectangle()
+//                    .fill(Color("Color 1"))
+//                    .frame(height: 2)
+//
+//                    Text("OR")
+//                    .foregroundColor(.white)
+//
+//                    Rectangle()
+//                    .fill(Color("Color 1"))
+//                    .frame(height: 2)
+//                }
+//                .padding(.horizontal, 20)
+//                .padding(.top, 50) // because login button is moved 25 in y axis and 25 padding = 50
+//
+//                HStack(spacing: 25){
+//                    Button(action: {
+//
+//                    }) {
+//                        Image("facebook")
+//                        .resizable()
+//                        .renderingMode(.original)
+//                        .frame(width: 60, height: 60)
+//                        .clipShape(Circle())
+//                    }
+//
+//                    Button(action: {
+//
+//                    }) {
+//                        Image("google")
+//                        .resizable()
+//                        .renderingMode(.original)
+//                        .frame(width: 60, height: 60)
+//                        .clipShape(Circle())
+//                    }
+//                }
+//                .padding(.vertical)
                 
-                HStack(spacing: 25){
-                    Button(action: {
-                        
-                    }) {
-                        Image("facebook")
-                        .resizable()
-                        .renderingMode(.original)
-                        .frame(width: 60, height: 60)
-                        .clipShape(Circle())
-                    }
-                    
-                    Button(action: {
-                        
-                    }) {
-                        Image("google")
-                        .resizable()
-                        .renderingMode(.original)
-                        .frame(width: 60, height: 60)
-                        .clipShape(Circle())
-                    }
-                }
-                .padding(.vertical)
+                Spacer() // added Spacer to arrange page in the middle after deleting 'fb' and 'google'
             }
             .background(Color("Color 3").edgesIgnoringSafeArea(.all))
         }

@@ -18,7 +18,7 @@ struct Path {
     public let points: [Point]
 }
 
-struct Room {
+struct Room : Hashable {
     public let index: String
     public let name: String
     public let coordinates: [CLLocationCoordinate2D]
@@ -39,6 +39,14 @@ struct Room {
     public func isToilet() -> Bool {
         return name.lowercased().contains("toilet")
     }
+    
+    static func == (lhs: Room, rhs: Room) -> Bool {
+        return lhs.index == rhs.index
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(index.hashValue)
+    }
 }
 
 struct Building {
@@ -58,16 +66,17 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
 //        let mapView = GMSMapView()
         return mapView
     }()
+    @Published var query: String = ""
     @Published var showAlert: Bool = false
     @Published var alertTitle: String = "Exception occurred"
     @Published var alertMessage: String = ""
+    @Published var building: Building?
     
     public static let UVT_LOCATION = CLLocationCoordinate2D(latitude: 45.74717, longitude: 21.23105)
     private let DEFAULT_ZOOM_LEVEL: Float = 17.5
     
     private var mapRenderer: MapRenderer!
     private let backendService: NavigationService
-    private var building: Building?
     
     private func createBuildingFromRooms(rooms: [Room]) throws -> Building {
         var floor: Int? = nil
@@ -112,6 +121,23 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         }
     }
     
+    public func selectRoom(room: Room) {
+//        query = room.name
+        guard let myLocation = mapView.myLocation else { return }
+        DispatchQueue.main.async { [weak self] in
+            Task {
+                do {
+                    self?.mapRenderer.highlightRoom(room)
+                    guard let path = try await self?.computePath(start: myLocation.coordinate, end: room.center) else { return }
+                    self?.mapRenderer.renderPath(path)
+                } catch {
+                    self?.showAlert = true
+                    self?.alertMessage = "\(error)"
+                }
+            }
+        }
+    }
+    
     public func computePath(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) async throws -> Path {
 //        start = CLLocationCoordinate2D(latitude: 45.74709967354057, longitude: 21.229815840527);
 //        end = CLLocationCoordinate2D(latitude: 45.74672276497516, longitude: 21.23155186839855);
@@ -139,24 +165,12 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
     }
     
     public func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
-        print("tapped: \(overlay)")
         guard let room = mapRenderer.overlayToRoom(overlay) else { return }
-        guard let myLocation = mapView.myLocation else { return }
-        DispatchQueue.main.async { [weak self] in
-            Task {
-                do {
-                    self?.mapRenderer.highlightRoom(room)
-                    guard let path = try await self?.computePath(start: myLocation.coordinate, end: room.center) else { return }
-                    self?.mapRenderer.renderPath(path)
-                } catch {
-                    self?.showAlert = true
-                    self?.alertMessage = "\(error)"
-                }
-            }
-        }
+        selectRoom(room: room)
     }
 
     public func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print(coordinate)
+        mapRenderer.highlightRoom(nil)
+        mapRenderer.renderPath(Path(points: []))
     }
 }

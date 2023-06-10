@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FriendsView: View {
     var body: some View {
-        Text("Friends")
+        FriendsContentView(person: [.person1, .person2, .person3, .person4, .person5, .person6, .person7, .person8])
     }
 }
 
@@ -18,3 +18,4 @@ struct FriendsView_Previews: PreviewProvider {
         FriendsView()
     }
 }
+
