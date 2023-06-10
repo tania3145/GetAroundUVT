@@ -14,13 +14,22 @@ import FirebaseStorage
 
 final class Loader : ObservableObject {
     @Published var data: Data? = nil
-
-    init(_ id: String){
+    private let id: String
+    
+    init(_ id: String) {
+        self.id = id
+        let service = FirebaseService.Instance()
+        service.registerEventListener(event: .storageProfileImageUpload) {
+            self.loadImageData()
+        }
+    }
+    
+    func loadImageData() {
         // the path to the image
         let url = "\(id)"
         let storage = Storage.storage()
         let ref = storage.reference().child(url)
-        ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        ref.getData(maxSize: 100 * 1024 * 1024) { data, error in
             if let error = error {
                 print("\(error)")
             }
@@ -33,21 +42,27 @@ final class Loader : ObservableObject {
 }
 
 struct FirebaseImage : View {
+    @ObservedObject private var imageLoader : Loader
     let placeholder = UIImage(named: "DefaultProfilePicture")!
 
     init(id: String) {
-        self.imageLoader = Loader(id)
+        imageLoader = Loader(id)
+        imageLoader.loadImageData()
     }
-
-    @ObservedObject private var imageLoader : Loader
 
     var image: UIImage? {
         imageLoader.data.flatMap(UIImage.init)
     }
 
     var body: some View {
-        Image(uiImage: image ?? placeholder)
-            .resizable()
+        if image != nil {
+            Image(uiImage: image!)
+                .resizable()
+                .rotationEffect(.degrees(90))
+        } else {
+            Image(uiImage: placeholder)
+                .resizable()
+        }
     }
 }
 
@@ -78,6 +93,14 @@ class FirebaseUser {
     }
 }
 
+enum FirebaseServiceError: Error {
+    case storageError(String)
+}
+
+enum FirebaseServiceEvent {
+    case storageProfileImageUpload
+}
+
 class FirebaseService {
     private static var instance: FirebaseService?
     
@@ -86,6 +109,12 @@ class FirebaseService {
             instance = FirebaseService()
         }
         return instance!
+    }
+    
+    private var listeners: Dictionary<FirebaseServiceEvent, [() -> Void]> = Dictionary()
+    
+    func registerEventListener(event: FirebaseServiceEvent, lambda: @escaping () -> Void) {
+        listeners[event, default: []].append(lambda)
     }
     
     func createUser(name: String, email: String, password: String) async throws {
@@ -129,5 +158,35 @@ class FirebaseService {
             }
         }
         return firebaseUser
+    }
+    
+    func uploadCurrentUserProfileImage(data: Data) async throws -> StorageMetadata? {
+        guard let user = Auth.auth().currentUser else {
+            return nil
+        }
+        let ref = Storage.storage().reference().child("\(user.uid)_profile_pic.png")
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<StorageMetadata, Error>) in
+            ref.putData(data, metadata: StorageMetadata(dictionary: [
+                "contentType": "image/png"
+            ])) { (metadata, error) in
+                guard let metadata = metadata else {
+                    continuation.resume(throwing: FirebaseServiceError.storageError("uploadCurrentUserProfileImage: No metadata received."))
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type.
+                let _ = metadata.size
+                // You can also access to download URL after upload.
+                ref.downloadURL { (url, error) in
+                    guard let _ = url else {
+                        continuation.resume(throwing: FirebaseServiceError.storageError("uploadCurrentUserProfileImage: No download url link available."))
+                        return
+                    }
+                    self.listeners[.storageProfileImageUpload, default: []].forEach { l in
+                        l()
+                    }
+                    continuation.resume(returning: metadata)
+                }
+            }
+        })
     }
 }
