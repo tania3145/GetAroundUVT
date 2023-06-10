@@ -72,16 +72,7 @@ struct FriendsRowView: View {
                         }
                     } else if personItem.location != nil {
                         Button(action: {
-                            DispatchQueue.main.async {
-                                Task {
-                                    do {
-                                        try await getDirections()
-                                    } catch {
-                                        showAlert = true
-                                        alertMessage = "\(error)"
-                                    }
-                                }
-                            }
+                            getDirections()
                         }) {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 5)
@@ -108,9 +99,9 @@ struct FriendsRowView: View {
         }
     }
     
-    func getDirections() async throws {
+    func getDirections() {
         tabSelection = 3
-        _ = try await mapViewModel.goToFriend(friend: personItem)
+        mapViewModel.goToFriend(friend: personItem)
     }
     
     func addFriend() async throws {

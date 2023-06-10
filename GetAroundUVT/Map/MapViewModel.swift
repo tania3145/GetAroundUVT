@@ -147,13 +147,22 @@ class MapViewModel: NSObject, ObservableObject, GMSMapViewDelegate {
         return path
     }
     
-    public func goToFriend(friend: Person) async throws {
-        guard let myLocation = await mapView.myLocation else { return }
+    public func goToFriend(friend: Person) {
+        guard let myLocation = mapView.myLocation else { return }
         guard let end = friend.location else { return }
-        let path = try await computePath(start: myLocation.coordinate, end: end)
-        mapRenderer.clearMap()
-        mapRenderer.renderFriend(friend)
-        mapRenderer.renderPath(path)
+        DispatchQueue.main.async { [weak self] in
+            Task {
+                do {
+                    guard let path = try await self?.computePath(start: myLocation.coordinate, end: end) else { return }
+                    self?.mapRenderer.clearMap()
+                    self?.mapRenderer.renderFriend(friend)
+                    self?.mapRenderer.renderPath(path)
+                } catch {
+                    self?.showAlert = true
+                    self?.alertMessage = "\(error)"
+                }
+            }
+        }
     }
     
     public func moveCameraToMyLocation() {

@@ -234,6 +234,7 @@ class MapRenderer {
         currentFriendLocationMarker = GMSMarker(position: location)
         currentFriendLocationMarker?.title = friend.name
         currentFriendLocationMarker?.map = mapView
+        mapView.selectedMarker = currentFriendLocationMarker
     }
     
     public func loadUVTAssets() throws -> GMUGeometryRenderer {
