@@ -11,6 +11,10 @@ import SwiftUI
 struct FriendsRowView: View {
     @Binding var tabSelection: Int
     @StateObject var mapViewModel: MapViewModel
+    @StateObject var friendsViewModel: FriendsViewModel
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Exception occurred"
+    @State var alertMessage: String = ""
     var personItem: Person
 
     var body: some View {
@@ -42,41 +46,72 @@ struct FriendsRowView: View {
                 
                 
                 HStack{
-                    Button(action: {
-                        
-                    }) {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 5)
-                                .frame(height: 35)
-                                .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448))
-                            Text("Add Friend")
-                                .font(.system(size: 15))
-                                .foregroundColor(.white)
+                    if !personItem.isFriend {
+                        Button(action: {
+                            DispatchQueue.main.async {
+                                Task {
+                                    do {
+                                        try await addFriend()
+                                    } catch {
+                                        showAlert = true
+                                        alertMessage = "\(error)"
+                                    }
+                                }
+                            }
+                        }) {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(height: 35)
+                                    .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448))
+                                Text("Add Friend")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.white)
+                            }
+                            
                         }
-
                     }
                     
-                    Button(action: {
-                        
-                    }) {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 5)
-                                .frame(height: 35)
-                                .foregroundColor(Color(red: 0.859, green: 0.678, blue: 0.273))
-                            Text("Get Directions")
-                                .font(.system(size: 15))
-                                .foregroundColor(.white)
+                    if personItem.isFriend {
+                        Button(action: {
+                            
+                        }) {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(height: 35)
+                                    .foregroundColor(Color(red: 0.859, green: 0.678, blue: 0.273))
+                                Text("Get Directions")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }
             }
         }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text(alertTitle),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+            
+            //        .edgesIgnoringSafeArea(.top)
+            //        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
+        }
+    }
+    
+    func getDirections() {
+        
+    }
+    
+    func addFriend() async throws {
+        try await friendsViewModel.addFriend(personItem: personItem)
     }
 }
 
 struct FriendsRowView_Preview: PreviewProvider {
     static var previews: some View {
-        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel(), persons: [.person1, .person2, .person3])
+        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel())
     }
 }
 

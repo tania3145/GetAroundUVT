@@ -7,13 +7,49 @@
 
 import SwiftUI
 
+class FriendsViewModel: ObservableObject {
+    @Published var currentUser: FirebaseUser!
+    @Published var friends: [Person] = []
+    @Published var others: [Person] = []
+    
+    @MainActor
+    func addFriend(personItem: Person) async throws {
+        let service = FirebaseService.Instance()
+        try await service.addFriend(uid: personItem.id)
+        try await updatePeople()
+    }
+    
+    @MainActor
+    func updatePeople() async throws {
+        let service = FirebaseService.Instance()
+        var allPeople = try await service.getAllUsers()
+        currentUser = try await service.getCurrentUserData()
+        allPeople = allPeople.filter { user in
+            user.uid != currentUser?.uid
+        }
+        let persons = allPeople.map { user in
+            var person = Person(id: user.uid, name: user.name ?? "", email: user.email ?? "")
+            if currentUser?.friends.contains(person.id) == true {
+                person.isFriend = true
+            }
+            return person
+        }
+        friends = persons.filter { person in
+            person.isFriend
+        }
+        others = persons.filter { person in
+            !person.isFriend
+        }
+    }
+}
+
 struct FriendsContentView: View {
     @Binding var tabSelection: Int
     @StateObject var mapViewModel: MapViewModel
     @State var showAlert: Bool = false
     @State var alertTitle: String = "Exception occurred"
     @State var alertMessage: String = ""
-    @State var persons: [Person] = []
+    @StateObject var friendsViewModel: FriendsViewModel = FriendsViewModel()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -24,10 +60,16 @@ struct FriendsContentView: View {
                     VStack{
                         ScrollView{
                             LazyVStack{
-                                ForEach(persons) { item in
-                                    FriendsRowView(tabSelection: $tabSelection, mapViewModel: mapViewModel, personItem: item)
+                                Text("Friends")
+                                ForEach(friendsViewModel.friends) { item in
+                                    FriendsRowView(tabSelection: $tabSelection, mapViewModel: mapViewModel, friendsViewModel: friendsViewModel, personItem: item)
                                         .padding()
-                                    Divider()
+                                }
+                                Divider()
+                                Text("Others")
+                                ForEach(friendsViewModel.others) { item in
+                                    FriendsRowView(tabSelection: $tabSelection, mapViewModel: mapViewModel, friendsViewModel: friendsViewModel, personItem: item)
+                                        .padding()
                                 }
                             }
                         }
@@ -40,14 +82,10 @@ struct FriendsContentView: View {
         }
         .ignoresSafeArea(.container, edges: .top)
         .onAppear() {
-            let service = FirebaseService.Instance()
             DispatchQueue.main.async {
                 Task {
                     do {
-                        let friends = try await service.getAllUsers()
-                        persons = friends.map { user in
-                            convertToPerson(user: user)
-                        }
+                        try await friendsViewModel.updatePeople()
                     } catch {
                         showAlert = true
                         alertMessage = "\(error)"
@@ -93,10 +131,6 @@ struct FriendsContentView: View {
 //        .ignoresSafeArea(.container, edges: .top)
     }
     
-    func convertToPerson(user: FirebaseUser) -> Person {
-        return Person(id: user.uid, name: user.name ?? "", email: user.email ?? "")
-    }
-    
     // MARK: Header
     func HeaderView()->some View {
         
@@ -136,6 +170,7 @@ struct Person: Identifiable {
     let name: String
 //    let image: URL?
     let email: String
+    var isFriend: Bool = false
     
     static var person1: Person {
         return Person(
@@ -217,6 +252,6 @@ struct Person: Identifiable {
 
 struct FriendsContentView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel(), persons: [.person1, .person2, .person3])
+        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel())
     }
 }

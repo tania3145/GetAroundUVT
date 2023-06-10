@@ -268,8 +268,8 @@
             filePath = "GetAroundUVT/Services/FirebaseService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "getAllUsers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -284,8 +284,8 @@
             filePath = "GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -300,8 +300,8 @@
             filePath = "GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -364,6 +364,84 @@
                   startingLineNumber = "47"
                   endingLineNumber = "47"
                   offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "796DF721-4983-463D-BFE2-21DDA8BE65D4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsRowView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "addFriend()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "796DF721-4983-463D-BFE2-21DDA8BE65D4 - 9df40816859f90b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GetAroundUVT.FriendsRowView.addFriend() async throws -&gt; ()"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsRowView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "796DF721-4983-463D-BFE2-21DDA8BE65D4 - 68e6e0474013b07d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for GetAroundUVT.FriendsRowView.addFriend() async throws -&gt; ()"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsRowView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "796DF721-4983-463D-BFE2-21DDA8BE65D4 - c29b1d49c0597ccd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for GetAroundUVT.FriendsRowView.addFriend() async throws -&gt; ()"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsRowView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "796DF721-4983-463D-BFE2-21DDA8BE65D4 - afd1ab2061f816c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for GetAroundUVT.FriendsRowView.addFriend() async throws -&gt; ()"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsRowView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>

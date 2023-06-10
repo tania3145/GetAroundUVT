@@ -87,6 +87,7 @@ class FirebaseUser {
     public var uid: String
     public var name: String?
     public var email: String?
+    public var friends: [String] = []
     
     init(uid: String) {
         self.uid = uid
@@ -121,7 +122,8 @@ class FirebaseService {
         let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
         try await Firestore.firestore().collection("users").document(authResult.user.uid).setData([
             "name": name,
-            "email": email
+            "email": email,
+            "friends": [String]()
         ])
     }
     
@@ -146,6 +148,8 @@ class FirebaseService {
                 firebaseUser.name = el.value as? String
             } else if el.key == "email" {
                 firebaseUser.email = el.value as? String
+            } else if el.key == "friends" {
+                firebaseUser.friends = el.value as? [String] ?? []
             }
         }
         return firebaseUser
@@ -211,5 +215,20 @@ class FirebaseService {
             users.append(toFirebaseUser(uid: el.documentID, attrs: data))
         }
         return users
+    }
+    
+    func addFriend(uid: String) async throws {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        let currentUser = try await getCurrentUserData()
+        guard let currentUser = currentUser else {
+            return
+        }
+        let db = Firestore.firestore()
+        currentUser.friends.append(uid)
+        try await db.collection("users").document(user.uid).updateData([
+            "friends": currentUser.friends
+        ])
     }
 }
