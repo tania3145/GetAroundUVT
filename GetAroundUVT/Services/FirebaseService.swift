@@ -54,12 +54,13 @@ struct FirebaseImage : View {
 struct FirebaseUserProfileImage : View {
     private var id: String
     
-    init() {
-        guard let user = Auth.auth().currentUser else {
-            id = ""
+    init(id: String? = nil) {
+        let userId = id ?? Auth.auth().currentUser?.uid
+        guard let userId = userId else {
+            self.id = ""
             return
         }
-        id = "\(user.uid)_profile_pic.png"
+        self.id = "\(userId)_profile_pic.png"
     }
     
     var body: some View {
