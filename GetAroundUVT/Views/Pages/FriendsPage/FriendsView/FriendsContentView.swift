@@ -7,35 +7,118 @@
 
 import SwiftUI
 
-struct FriendsContentView: View{   
+struct FriendsContentView: View {
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Exception occurred"
+    @State var alertMessage: String = ""
     var person: [Person]
     
     var body: some View {
-        VStack{
-            HStack(spacing: 10) {
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("People")
-                        .font(.largeTitle.bold())
-                        .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
-                }
-                .hLeading()
-            }
-            .padding()
-            .padding(.top, getSafeArea().top)
-
-            .background(Color.white)
+        ScrollView(.vertical, showsIndicators: false) {
             
-            ScrollView{
-                LazyVStack{
-                    ForEach(person) { item in
-                        FriendsRowView(personItem: item)
-                            .padding()
+            // MARK: Lazy Stack with Pinned Header
+            LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
+                Section {
+                    VStack{
+                        ScrollView{
+                            LazyVStack{
+                                ForEach(person) { item in
+                                    FriendsRowView(personItem: item)
+                                        .padding()
+                                    Divider()
+                                }
+                            }
+                        }
+                    }
+                }
+                header: {
+                   HeaderView()
+               }
+            }
+        }
+        .ignoresSafeArea(.container, edges: .top)
+        .onAppear() {
+            let service = NavigationService.Instance()
+            DispatchQueue.main.async {
+                Task {
+                    do {
+                        // TODO: Add friends API
+                    } catch {
+                        showAlert = true
+                        alertMessage = "\(error)"
                     }
                 }
             }
         }
-        .ignoresSafeArea(.container, edges: .top)
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text(alertTitle),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+            
+            //        .edgesIgnoringSafeArea(.top)
+            //        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
+        }
+        
+//        VStack{
+//            HStack(spacing: 10) {
+//                
+//                VStack(alignment: .leading, spacing: 10) {
+//                    Text("People")
+//                        .font(.largeTitle.bold())
+//                        .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
+//                }
+//                .hLeading()
+//            }
+//            .padding()
+//            .padding(.top, getSafeArea().top)
+//
+//            .background(Color.white)
+//            
+//            ScrollView{
+//                LazyVStack{
+//                    ForEach(person) { item in
+//                        FriendsRowView(personItem: item)
+//                            .padding()
+//                    }
+//                }
+//            }
+//        }
+//        .ignoresSafeArea(.container, edges: .top)
+    }
+    
+    // MARK: Header
+    func HeaderView()->some View {
+        
+        HStack(spacing: 10) {
+            
+            VStack(alignment: .leading, spacing: 10) {
+//                Text("Today - \(Date().formatted(date: .abbreviated, time: .omitted))")
+//                    .foregroundColor(.gray)
+                
+                Text("People")
+                    .font(.largeTitle.bold())
+//                    .foregroundColor(.white)
+                    .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
+            }
+            .hLeading()
+            
+            Button {
+                // tabSelection = 5
+            } label: {
+                Image("Profile")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 45, height: 45)
+                    .clipShape(Circle())
+            }
+        }
+        .padding()
+        .padding(.top, getSafeArea().top)
+
+        .background(Color.white)
+//        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
     }
 }
 
