@@ -13,23 +13,25 @@ struct FriendsRowView: View {
     @StateObject var mapViewModel: MapViewModel
     var personItem: Person
 
-    var body: some View{
+    var body: some View {
         HStack{
-            if let imageURL = personItem.image {
-                AsyncImage(url: imageURL) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipped()
-                        .clipShape(Circle())
-                        .frame(width: 80, height: 80)
-                } placeholder: {
-                    Color.gray
-                }
-            }
+//            if let imageURL = personItem.image {
+//                AsyncImage(url: imageURL) { image in
+//                    image
+//                        .resizable()
+            FirebaseUserProfileImage(id: personItem.id)
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+                .clipShape(Circle())
+                .frame(width: 80, height: 80)
+//                }
+//                placeholder: {
+//                    Color.gray
+//                }
+//            }
             VStack (alignment: .leading, spacing: 10){
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("\(personItem.firstName) \(personItem.lastName)")
+                    Text("\(personItem.name)")
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448))
 
@@ -74,7 +76,7 @@ struct FriendsRowView: View {
 
 struct FriendsRowView_Preview: PreviewProvider {
     static var previews: some View {
-        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel(), person: [.person1, .person2])
+        FriendsContentView(tabSelection: .constant(1), mapViewModel: MapViewModel(), persons: [.person1, .person2, .person3])
     }
 }
 

@@ -12,7 +12,7 @@ struct FriendsView: View {
     @StateObject var mapViewModel: MapViewModel
     
     var body: some View {
-        FriendsContentView(tabSelection: $tabSelection, mapViewModel: mapViewModel, person: [.person1, .person2, .person3, .person4, .person5, .person6, .person7, .person8])
+        FriendsContentView(tabSelection: $tabSelection, mapViewModel: mapViewModel)
     }
 }
 

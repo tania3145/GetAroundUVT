@@ -167,22 +167,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C0712AFD-C288-4F87-A0A1-DC5C43C3D89E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GetAroundUVT/Services/NavigationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "getJson(_:queryItems:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5E5776A8-016F-443D-8A79-E8E666A28DEA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -261,33 +245,127 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EB6AA472-8E8C-4A9A-8EC3-64B3DFA17C39"
+            uuid = "1B498F0C-1818-4CAC-8CBF-A51177D8FD34"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GetAroundUVT/Services/FirebaseService.swift"
+            filePath = "GetAroundUVT/Services/NavigationService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "uploadCurrentUserProfileImage(data:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "getJson(_:queryItems:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B49C9470-E4BD-41DB-81C1-D7F3B1EFF25A"
+            uuid = "863ADF6A-952D-438C-BCFB-98CAA0E2AD59"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GetAroundUVT/Services/FirebaseService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "uploadCurrentUserProfileImage(data:)"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "getAllUsers()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F960451-898C-4173-B5A7-835A36306A8F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D00FBBD5-BE75-4E93-9796-43C040F73112"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "D00FBBD5-BE75-4E93-9796-43C040F73112 - c414d167f6f87f3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #2 () -&gt; () in GetAroundUVT.FriendsContentView.body.getter : some"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "D00FBBD5-BE75-4E93-9796-43C040F73112 - 9af2fec95aa8b293"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #2 () -&gt; () in GetAroundUVT.FriendsContentView.body.getter : some"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "D00FBBD5-BE75-4E93-9796-43C040F73112 - 9fe566fa590f458c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #2 () -&gt; () in GetAroundUVT.FriendsContentView.body.getter : some"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "D00FBBD5-BE75-4E93-9796-43C040F73112 - e7aa6a1ee726098e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #2 () -&gt; () in GetAroundUVT.FriendsContentView.body.getter : some"
+                  moduleName = "GetAroundUVT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tania/Facultate/Licenta/GetAroundUVT/GetAroundUVT/Views/Pages/FriendsPage/FriendsView/FriendsContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

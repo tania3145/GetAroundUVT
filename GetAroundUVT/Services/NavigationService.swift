@@ -65,12 +65,12 @@ class NavigationService {
             .appending(queryItems: queryItems)
         let urlRequest = URLRequest(url: baseUrl)
         let (data, res) = try await URLSession.shared.data(for: urlRequest)
+        let decoder = JSONDecoder()
         if let res = res as? HTTPURLResponse {
             if !(200...299).contains(res.statusCode) {
-                throw NavigationServiceError.httpError("Http error occurred.")
+                throw NavigationServiceError.httpError(String(decoding: data, as: UTF8.self))
             }
         }
-        let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     }
     

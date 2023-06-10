@@ -58,7 +58,7 @@ struct FirebaseImage : View {
         if image != nil {
             Image(uiImage: image!)
                 .resizable()
-                .rotationEffect(.degrees(90))
+//                .rotationEffect(.degrees(90))
         } else {
             Image(uiImage: placeholder)
                 .resizable()
@@ -139,6 +139,18 @@ class FirebaseService {
         }
     }
     
+    private func toFirebaseUser(uid: String, attrs: Dictionary<String, Any>) -> FirebaseUser {
+        let firebaseUser = FirebaseUser(uid: uid)
+        attrs.forEach { el in
+            if el.key == "name" {
+                firebaseUser.name = el.value as? String
+            } else if el.key == "email" {
+                firebaseUser.email = el.value as? String
+            }
+        }
+        return firebaseUser
+    }
+    
     func getCurrentUserData() async throws -> FirebaseUser? {
         guard let user = Auth.auth().currentUser else {
             return nil
@@ -149,15 +161,7 @@ class FirebaseService {
             return nil
         }
         
-        let firebaseUser = FirebaseUser(uid: user.uid)
-        userData.forEach { el in
-            if el.key == "name" {
-                firebaseUser.name = el.value as? String
-            } else if el.key == "email" {
-                firebaseUser.email = el.value as? String
-            }
-        }
-        return firebaseUser
+        return toFirebaseUser(uid: user.uid, attrs: userData)
     }
     
     func uploadCurrentUserProfileImage(data: Data) async throws -> StorageMetadata? {
@@ -188,5 +192,24 @@ class FirebaseService {
                 }
             }
         })
+    }
+    
+//    func getFriends() async throws -> [FirebaseUser] {
+//
+//    }
+//
+//    func getOtherPeople() async throws -> [FirebaseUser] {
+//
+//    }
+    
+    func getAllUsers() async throws -> [FirebaseUser] {
+        let db = Firestore.firestore()
+        let usersData = try await db.collection("users").getDocuments().documents
+        var users: [FirebaseUser] = []
+        usersData.forEach { el in
+            let data = el.data()
+            users.append(toFirebaseUser(uid: el.documentID, attrs: data))
+        }
+        return users
     }
 }
