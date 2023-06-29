@@ -42,7 +42,7 @@ enum NavigationServiceError: Error {
 }
 
 class NavigationService {
-    private static let NAVIGATION_API_BASE_URL = URL(string: "https://adc6-2a02-2f01-4100-1b00-6ce3-a19b-838c-81e8.ngrok-free.app")!;
+    private static let NAVIGATION_API_BASE_URL = URL(string: "https://38d7-2a02-2f0f-3009-ad00-ed0e-8e84-a412-981a.ngrok-free.app")!;
     private static let NAVIGATION_API_PATH_METHOD = "/path";
     private static let NAVIGATION_API_POI_METHOD = "/poi";
     private static let NAVIGATION_API_POSTS_METHOD = "/posts";

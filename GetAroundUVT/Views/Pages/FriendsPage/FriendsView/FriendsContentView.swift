@@ -70,12 +70,16 @@ struct FriendsContentView: View {
                         ScrollView{
                             LazyVStack{
                                 Text("Friends")
+                                    .font(.title2.bold())
+                                    .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
                                 ForEach(friendsViewModel.friends) { item in
                                     FriendsRowView(tabSelection: $tabSelection, mapViewModel: mapViewModel, friendsViewModel: friendsViewModel, personItem: item)
                                         .padding()
                                 }
                                 Divider()
                                 Text("Others")
+                                    .font(.title2.bold())
+                                    .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
                                 ForEach(friendsViewModel.others) { item in
                                     FriendsRowView(tabSelection: $tabSelection, mapViewModel: mapViewModel, friendsViewModel: friendsViewModel, personItem: item)
                                         .padding()

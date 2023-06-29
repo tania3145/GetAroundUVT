@@ -145,26 +145,17 @@ struct LoginView: View {
                 
                 HStack{
                     Spacer(minLength: 0)
-                    
-                    Button(action: {
-                        
-                    }) {
-                        Text("Don't have an account? Sign Up!")
-                            .foregroundColor(Color.white.opacity(0.9))
-                    }
+                    Text("Don't have an account? Sign Up!")
+                        .foregroundColor(Color("Color 2"))
                 }
                 .padding(.vertical)
                 .padding(.top, 10)
-                
+
                 HStack{
                     Spacer(minLength: 0)
-                    
-                    Button(action: {
-                        
-                    }) {
-                        Text("Forget Password?")
-                            .foregroundColor(Color.white.opacity(0.9))
-                    }
+                    Text("Forget Password?")
+                        .foregroundColor(Color("Color 2"))
+
                 }
                 .padding(.horizontal)
                 .padding(.top, 10)

@@ -21,12 +21,8 @@ struct FeedView: View {
         HStack(spacing: 10) {
             
             VStack(alignment: .leading, spacing: 10) {
-//                Text("Today - \(Date().formatted(date: .abbreviated, time: .omitted))")
-//                    .foregroundColor(.gray)
-                
                 Text("Posts")
                     .font(.largeTitle.bold())
-//                    .foregroundColor(.white)
                     .foregroundColor(Color(red: 0.115, green: 0.287, blue: 0.448)) // Dark Blue UVT Color
             }
             .hLeading()
@@ -46,7 +42,6 @@ struct FeedView: View {
         .padding(.top, getSafeArea().top)
 
         .background(Color.white)
-//        .background(Color(red: 0.115, green: 0.287, blue: 0.448))
     }
     
     var body: some View {
